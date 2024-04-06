@@ -37,7 +37,7 @@ app.get('/items', function(req, res) {
 
 app.get('/items/*', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  res.json({success: 'get call succeed for *!', url: req.url});
 });
 
 /****************************

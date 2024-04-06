@@ -12,7 +12,7 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
 
     recognition.lang = 'ko';
     recognition.interimResults = false;
-    recognition.continuous = false; // Set to true if you want it to keep listening after a result
+    recognition.continuous = true; // Set to true if you want it to keep listening after a result
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;

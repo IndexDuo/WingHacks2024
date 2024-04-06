@@ -6,7 +6,7 @@ import logo from "../images/Logo.png";
 function HomeScreen() {
   const navigate = useNavigate();
 
-  // navigate to other screens
+  // navigate to badges screens
   const navigateToBadgesScreen = () => {
     navigate("/badges");
   };

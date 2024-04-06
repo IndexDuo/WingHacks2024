@@ -1,0 +1,48 @@
+.mode {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.mode h1 {
+    font-family: "dream-avenue";
+    font-size: 50px;
+    text-align: center;
+}
+
+.or-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .or {
+    font-size: 25px;
+    font-weight: 600;
+    position: relative;
+    padding: 0 10px; /* Adjust this padding if necessary */
+    z-index: 1;
+  }
+  
+  .or:before,
+  .or:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 280%; /* Ensures that each line can extend up to half the container's width */
+    height: 1.5px;
+    background-color: black;
+    z-index: -1; /* Places the lines behind the text */
+  }
+  
+  .or:before {
+    left: -310%; /* Extend to the left */
+  }
+  
+  .or:after {
+    right: -310%; /* Extend to the right */
+  }

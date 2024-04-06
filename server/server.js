@@ -29,7 +29,7 @@ app.get('/game', async (req, res) => {
 
         // get data from collection
         const data = await collection.find().toArray();
-        console.log('data is', data);
+        
         // send data as json
         res.json(data);
     } catch (e) {

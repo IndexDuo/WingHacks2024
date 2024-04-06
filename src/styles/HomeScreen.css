@@ -1,0 +1,20 @@
+/* Reset default margin and padding */
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  /* Ensure html and body are full height */
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
+
+  
+  .App-header {
+    text-align: center;
+  }
+  

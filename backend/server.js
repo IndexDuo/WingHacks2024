@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(`${process.env.MONGODB_URI}/CelebrityPhotos`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -24,21 +24,13 @@ app.get('/', (req, res) => {
 // '/data' route to send all data in JSON format
 app.get('/data', async (req, res) => {
   try {
-    // Get the database and collection names from environment variables
-    const databaseName = process.env.DATABASE_NAME || 'CelebrityPhotos';
-    const collectionName = 'KPopFaces';
-
-    // Fetch all data from the specified collection
-    const data = await mongoose.connection.db.collection(collectionName).find({}).toArray();
+    // Fetch all data from the 'KPopFaces' collection in the 'CelebrityPhotos' database
+    const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
 
     if (data.length === 0) {
-      res.status(404).json({ message: `No data found in the ${collectionName} collection of the ${databaseName} database` });
+      res.status(404).json({ message: 'No data found in the KPopFaces collection' });
     } else {
-      res.json({
-        databaseName,
-        collectionName,
-        data
-      });
+      res.json(data);
     }
   } catch (error) {
     console.error('Error fetching data:', error);

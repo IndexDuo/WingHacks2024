@@ -10,7 +10,8 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-    recognition.lang = 'ko';
+    recognition.lang = 'ko'; // Not guaranteed to work
+
     recognition.interimResults = false;
     recognition.continuous = true; // Set to true if you want it to keep listening after a result
 
@@ -25,14 +26,6 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
       console.error('Speech recognition error', event.error);
       setIsListening(false); // Stop listening on error
     };
-
-    recognition.onstart = () => {
-        console.log('Speech recognition service has started');
-      };
-      
-      recognition.onend = () => {
-        console.log('Speech recognition service has ended');
-      };
 
     recognition.start();
 

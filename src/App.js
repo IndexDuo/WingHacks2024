@@ -8,15 +8,13 @@ import GameScreen from './components/GameScreen';
 import FeedbackScreen from './components/FeedbackScreen';
 import ResultScreen from './components/ResultScreen';
 //lindso branch below
-import Home from './components/HomeScreen';
 import KpopScreen from './components/KpopScreen';
 
 function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/" element={<Home />} />
-          <Route path="/kpop" element={<KpopScreen />} />
+        <Route path="/kpop" element={<KpopScreen />} />
         <Route path="/home-jl" element={<WelcomeScreen />} />
         <Route path="/mode-selection" element={<ModeSelectionScreen />} />
         <Route path="/game" element={<GameScreen />} />

@@ -6,9 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://linzo75:WwGAMb1OTflA8Ej7@winghacks.wi3akjz.mongodb.net', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect('mongodb+srv://jing:jingpassword@winghacks.wi3akjz.mongodb.net', {
   dbName: 'CelebrityPhotos'
 })
 .then(() => console.log('Connected to MongoDB'))
@@ -25,11 +23,11 @@ app.get('/', (req, res) => {
 // '/data' route to send all data in JSON format
 app.get('/data', async (req, res) => {
   try {
-    // Fetch all data from the 'KPopFaces' collection in the 'CelebrityPhotos' database
-    const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
+    // Fetch all data from the 'KpopIdols' collection in the 'CelebrityPhotos' database
+    const data = await mongoose.connection.db.collection('kpopIdols').find({}).toArray();
 
     if (data.length === 0) {
-      res.status(404).json({ message: 'No data found in the KPopFaces collection' });
+      res.status(404).json({ message: 'No data found in the KpopIdols collection' });
     } else {
       res.json(data);
     }

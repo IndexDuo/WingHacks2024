@@ -16,6 +16,7 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
+      console.log('Transcript:', transcript);
       onTranscriptReceived(transcript); // Call the passed in function with the transcript
       setIsListening(false); // Optionally stop listening after receiving a result
     };
@@ -24,6 +25,14 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
       console.error('Speech recognition error', event.error);
       setIsListening(false); // Stop listening on error
     };
+
+    recognition.onstart = () => {
+        console.log('Speech recognition service has started');
+      };
+      
+      recognition.onend = () => {
+        console.log('Speech recognition service has ended');
+      };
 
     recognition.start();
 

@@ -19,7 +19,8 @@ export default async (req, res) => {
   const { db, client } = await connectToDatabase();
   
   try {
-    const data = await db.collection('KPopFaces').find({}).toArray();
+    // changing collection to KpopIdols
+    const data = await db.collection('kpopIdols').find({}).toArray();
     res.status(200).json(data);
   } catch (error) {
     console.error('Error accessing the database:', error);

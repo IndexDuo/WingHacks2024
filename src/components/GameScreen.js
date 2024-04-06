@@ -11,6 +11,7 @@ import stringSimilarity from 'string-similarity';
 const GameScreen = () => {
   const [data, setData] = useState([]);
   const [randomPhoto, setRandomPhoto] = useState(null);
+  const [chosenPhotos, setChosenPhotos] = useState([]);
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
@@ -49,8 +50,17 @@ const startTimer = () => {
   const getRandomCeleb = () => {
     setRandomPhoto(null); // Clear the previous photo state
     console.log("Getting random celebrity...");
-    const randomIndex = Math.floor(Math.random() * data.length);
-    setRandomPhoto(data[randomIndex]);
+    const unchosenPhotos = data.filter(photo => !chosenPhotos.includes(photo._id));
+    if (unchosenPhotos.length === 0) {
+      alert('You have guessed all the celebrities!');
+      // may need more code here to reset the game
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * unchosenPhotos.length);
+    const selectedPhoto = unchosenPhotos[randomIndex];
+    setRandomPhoto(selectedPhoto);
+    setChosenPhotos(prev => [...prev, selectedPhoto._id])
     startTimer();
 };
 

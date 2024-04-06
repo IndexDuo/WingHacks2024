@@ -12,7 +12,7 @@ const GameScreen = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/game');
+      const response = await fetch('/data');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (e) {

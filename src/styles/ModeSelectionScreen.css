@@ -63,4 +63,7 @@
     background: none;
     cursor: pointer;
     width: 20%;
+    position: absolute;
+    top: 30px;
+    font-size: 40px;
   }

@@ -10,7 +10,7 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-    recognition.lang = 'ko'; // Not guaranteed to work
+    recognition.lang = 'en'; // Not guaranteed to work
 
     recognition.interimResults = false;
     recognition.continuous = true; // Set to true if you want it to keep listening after a result

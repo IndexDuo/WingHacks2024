@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import VoiceRecognition from './VoiceRecognition';
 // import * as wanakana from 'wanakana'; this is for japanese
 // import fuzzysort from 'fuzzysort';
 // import Romanizer from './Romanizer';
 import { romanizeKorean } from '../utils/romanizeKorean'; 
 import stringSimilarity from 'string-similarity';
-
-
 
 const GameScreen = () => {
   const [data, setData] = useState([]);
@@ -18,7 +16,7 @@ const GameScreen = () => {
 
 const startTimer = () => {
   setIsTimerActive(true);
-  setTimeRemaining(10); // Reset countdown to 5 seconds whenever the timer starts
+  setTimeRemaining(30); // Reset countdown to 5 seconds whenever the timer starts
   const interval = setInterval(() => {
     setTimeRemaining(prevTime => {
       if (prevTime <= 1) {
@@ -35,7 +33,7 @@ const startTimer = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/api/data');
+      const response = await fetch('/data');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (e) {
@@ -51,6 +49,7 @@ const startTimer = () => {
     setRandomPhoto(null); // Clear the previous photo state
     console.log("Getting random celebrity...");
     const unchosenPhotos = data.filter(photo => !chosenPhotos.includes(photo._id));
+
     if (unchosenPhotos.length === 0) {
       alert('You have guessed all the celebrities!');
       // may need more code here to reset the game
@@ -63,7 +62,6 @@ const startTimer = () => {
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
     startTimer();
 };
-
 
   const checkAnswer = (transcript) => {
     setIsTimerActive(false);
@@ -89,9 +87,8 @@ const startTimer = () => {
     }
   };
   
-
   const handleTranscript = (transcript) => {
-    if (isTimerActive) {
+    if (isTimerActive && randomPhoto) {
       checkAnswer(transcript);
     }
   };
@@ -101,7 +98,7 @@ const startTimer = () => {
       <button onClick={getRandomCeleb}>Get Random Celebrity</button>
       {randomPhoto && (
         <div>
-          <img src={randomPhoto.image} alt={randomPhoto.name} />
+          <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
             <p>{isCorrect ? 'Correct!' : 'Incorrect.'}</p>

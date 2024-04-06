@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VoiceRecognition from './VoiceRecognition';
 // import * as wanakana from 'wanakana'; this is for japanese
-import fuzzysort from 'fuzzysort';
+// import fuzzysort from 'fuzzysort';
 // import Romanizer from './Romanizer';
 import { romanizeKorean } from '../utils/romanizeKorean'; 
 import stringSimilarity from 'string-similarity';
@@ -12,13 +12,12 @@ const GameScreen = () => {
   const [data, setData] = useState([]);
   const [randomPhoto, setRandomPhoto] = useState(null);
   const [isTimerActive, setIsTimerActive] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
-  const [transcript, setTranscript] = useState('');
 
 const startTimer = () => {
   setIsTimerActive(true);
-  setTimeRemaining(50); // Reset countdown to 5 seconds whenever the timer starts
+  setTimeRemaining(10); // Reset countdown to 5 seconds whenever the timer starts
   const interval = setInterval(() => {
     setTimeRemaining(prevTime => {
       if (prevTime <= 1) {
@@ -48,30 +47,26 @@ const startTimer = () => {
   }, []);
 
   const getRandomCeleb = () => {
+    setRandomPhoto(null); // Clear the previous photo state
+    console.log("Getting random celebrity...");
     const randomIndex = Math.floor(Math.random() * data.length);
     setRandomPhoto(data[randomIndex]);
     startTimer();
-  };
+};
 
-  useEffect(() => {
-    if (!isTimerActive && transcript) {
-      checkAnswer();
-    }
-    // Reset `isCorrect` state to `null` or initial state when starting a new timer
-    // to avoid showing the result of the previous attempt.
-    if (isTimerActive) setIsCorrect(null);
-  }, [transcript, isTimerActive]);
-  
 
-  const checkAnswer = () => {
+  const checkAnswer = (transcript) => {
     setIsTimerActive(false);
     if (transcript) {
       const convertedTranscript = romanizeKorean(transcript);
       console.log("Converted Transcript: " + convertedTranscript);
       
-      // Assuming randomPhoto.name is already in the desired format (Romanized if necessary)
+    //   const testcompare = "annyeohaseyo"    
+    //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
       const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, romanizeKorean(randomPhoto.name));
-      console.log("Celebrity Name: " + randomPhoto.name);
+    // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
+
+      console.log("Random Photo Name: " + randomPhoto.name);
       console.log("Similarity Score: " + similarityScore);
   
       // Decide on a threshold for correctness. For example, 0.5.
@@ -85,12 +80,11 @@ const startTimer = () => {
   };
   
 
-  const handleTranscript = (receivedTranscript) => {
+  const handleTranscript = (transcript) => {
     if (isTimerActive) {
-      setTranscript(receivedTranscript); 
+      checkAnswer(transcript);
     }
   };
-  
 
   return (
     <div>

@@ -1,1 +1,25 @@
-{}
+{
+  "api": {
+    "kpopceleb": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "winghacks202464b097e5"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "winghacks202464b097e5": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}

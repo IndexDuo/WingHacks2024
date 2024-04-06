@@ -10,6 +10,11 @@
       "StackName": "amplify-winghacks2024-dev-c5cc0",
       "StackId": "arn:aws:cloudformation:us-east-1:992382616767:stack/amplify-winghacks2024-dev-c5cc0/627bb550-f3ec-11ee-b85d-0e19d195478b",
       "AmplifyAppId": "d1k8piyaki6fgj"
+    },
+    "categories": {
+      "function": {
+        "winghacks202464b097e5": {}
+      }
     }
   }
 }

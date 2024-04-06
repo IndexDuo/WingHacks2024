@@ -18,7 +18,6 @@ function App() {
       <Route path="/game" component={GameScreen} />
       <Route path="/feedback" component={FeedbackScreen} />
       <Route path="/results" component={ResultScreen} />
-      {/* Add more routes as needed */}
     </Routes>
   </Router>
   );

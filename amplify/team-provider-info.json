@@ -15,7 +15,7 @@
       "function": {
         "winghacks202464b097e5": {
           "deploymentBucketName": "amplify-winghacks2024-dev-c5cc0-deployment",
-          "s3Key": "amplify-builds/winghacks202464b097e5-476443336d6e7a437764-build.zip"
+          "s3Key": "amplify-builds/winghacks202464b097e5-54356d594832694a3256-build.zip"
         }
       },
       "api": {

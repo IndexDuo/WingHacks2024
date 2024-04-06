@@ -7,14 +7,11 @@ import ModeSelectionScreen from './components/ModeSelectionScreen';
 import GameScreen from './components/GameScreen';
 import FeedbackScreen from './components/FeedbackScreen';
 import ResultScreen from './components/ResultScreen';
-//lindso branch below
-import KpopScreen from './components/KpopScreen';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/kpop" element={<KpopScreen />} />
         <Route path="/home-jl" element={<WelcomeScreen />} />
         <Route path="/mode-selection" element={<ModeSelectionScreen />} />
         <Route path="/game" element={<GameScreen />} />

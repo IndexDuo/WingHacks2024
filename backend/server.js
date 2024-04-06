@@ -23,6 +23,7 @@ app.get('/data', async (req, res) => {
     // Fetch all data from your MongoDB database
     const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
     res.json(data);
+    res.send('API is running...');
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Error fetching data' });

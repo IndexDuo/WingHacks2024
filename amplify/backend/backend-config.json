@@ -21,5 +21,23 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+  },
+  "parameters": {
+    "AMPLIFY_function_winghacks202464b097e5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "winghacks202464b097e5"
+        }
+      ]
+    },
+    "AMPLIFY_function_winghacks202464b097e5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "winghacks202464b097e5"
+        }
+      ]
+    }
   }
 }

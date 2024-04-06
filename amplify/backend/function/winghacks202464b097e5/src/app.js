@@ -12,7 +12,6 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-// const { scrapeData } = require('./scraper');
 
 // declare a new express app
 const app = express()
@@ -38,7 +37,7 @@ app.get('/items', function(req, res) {
 
 app.get('/items/*', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed for *!', url: req.url});
+  res.json({success: 'get call succeed!', url: req.url});
 });
 
 /****************************
@@ -86,8 +85,6 @@ app.delete('/items/*', function(req, res) {
 app.listen(3000, function() {
     console.log("App started")
 });
-
-
 
 // Export the app object. When executing the application local this does nothing. However,
 // to port it to AWS Lambda we will create a wrapper around that will load the app from

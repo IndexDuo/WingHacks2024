@@ -1,28 +1,33 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/HomeScreen.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/HomeScreen.css";
+import logo from "../images/Logo.png";
 
 function HomeScreen() {
   const navigate = useNavigate();
 
-  // navigate to other screens
-  const navigateToKpopScreen = () => {
-    navigate('/kpop');
+  // navigate to badges screens
+  const navigateToBadgesScreen = () => {
+    navigate("/badges");
   };
 
-  //to test voice recognition
+  // navigate to game
   const navigateToGameScreen = () => {
-    navigate('/game');
-  }
+    navigate("/game");
+  };
 
   return (
     <div className="App">
-      <header className = "App-header">
-        {/* logo here */}
-        <h1>BiasGuessr</h1>
+      <header className="App-header">
+        <img src={logo} alt="Bias Guessr Logo" />
         <p>Can you guess the celebrity?</p>
-        <button onClick={navigateToKpopScreen}>K-POP</button>
-        <button onClick={navigateToGameScreen}>Voice Recognition</button>
+        <button className="game-button" onClick={navigateToGameScreen}>
+          Start Game
+        </button>
+        <br />
+        <button className="badges-button" onClick={navigateToBadgesScreen}>
+          Badges
+        </button>
       </header>
     </div>
   );

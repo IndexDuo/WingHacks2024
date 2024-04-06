@@ -17,4 +17,32 @@ html, body {
   .App-header {
     text-align: center;
   }
-  
+
+.game-button {
+  background-color: #97444A;
+  color: white;
+}
+
+.badges-button {
+  background-color: #F6C9CC;
+}
+
+button {
+  width: 344px;
+height: 85px;
+border: none;
+border-radius: 15px;
+font-size: 25px;
+font-family: "open-sans";
+font-weight:650;
+text-transform: uppercase;
+}
+
+img {
+  padding: 0;
+  width: 400px;
+}
+
+p {
+  font-family: "open-sans";
+}

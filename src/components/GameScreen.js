@@ -74,6 +74,7 @@ const startTimer = () => {
 };
 
   const checkAnswer = (transcript) => {
+    setIsCorrect(null)
     setIsTimerActive(false);
     if (transcript) {
       const convertedTranscript = romanizeKorean(transcript);
@@ -112,7 +113,7 @@ const startTimer = () => {
           <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct!' : 'Incorrect.'}</p>
+            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
           )}
         </div>
       )}

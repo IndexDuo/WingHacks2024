@@ -20,13 +20,21 @@ app.get('/', (req, res) => {
 
 app.get('/data', async (req, res) => {
   try {
+    // Get the database and collection names
+    const databaseName = 'CelebrityPhotos';
+    const collectionName = 'KPopFaces';
+
     // Fetch all data from the 'KPopFaces' collection in the 'CelebrityPhotos' database
-    const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
-    
+    const data = await mongoose.connection.db.collection(collectionName).find({}).toArray();
+
     if (data.length === 0) {
-      res.status(404).json({ message: 'No data found in the KPopFaces collection' });
+      res.status(404).json({ message: `No data found in the ${collectionName} collection of the ${databaseName} database` });
     } else {
-      res.json(data);
+      res.json({
+        databaseName,
+        collectionName,
+        data
+      });
     }
   } catch (error) {
     console.error('Error fetching data:', error);

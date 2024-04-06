@@ -10,22 +10,15 @@ import ResultScreen from './components/ResultScreen';
 
 function App() {
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<WelcomeScreen />} />
-    //     <Route path="/mode-selection" element={<ModeSelectionScreen />} />
-    //     <Route path="/game" element={<GameScreen />} />
-    //     <Route path="/feedback" element={<FeedbackScreen />} />
-    //     <Route path="/results" element={<ResultScreen />} />
-    //   </Routes>
-    // </Router>
-    <div>
-      <WelcomeScreen />
-      <ModeSelectionScreen />
-      <GameScreen />
-      <FeedbackScreen />
-      <ResultScreen />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<WelcomeScreen />} />
+        <Route path="/mode-selection" element={<ModeSelectionScreen />} />
+        <Route path="/game" element={<GameScreen />} />
+        <Route path="/feedback" element={<FeedbackScreen />} />
+        <Route path="/results" element={<ResultScreen />} />
+      </Routes>
+    </Router>
   );
 }
 

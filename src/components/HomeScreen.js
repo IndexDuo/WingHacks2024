@@ -5,14 +5,9 @@ import '../styles/HomeScreen.css';
 function HomeScreen() {
   const navigate = useNavigate();
 
-  // navigate to other screens
-  const navigateToKpopScreen = () => {
-    navigate('/kpop');
-  };
-
   //to test voice recognition
-  const navigateToGameScreen = () => {
-    navigate('/game');
+  const navigateToModeSelectionScreen = () => {
+    navigate('/mode-selection');
   }
 
   return (
@@ -21,8 +16,7 @@ function HomeScreen() {
         {/* logo here */}
         <h1>BiasGuessr</h1>
         <p>Can you guess the celebrity?</p>
-        <button onClick={navigateToKpopScreen}>K-POP</button>
-        <button onClick={navigateToGameScreen}>Voice Recognition</button>
+        <button onClick={navigateToModeSelectionScreen}>Start</button>
       </header>
     </div>
   );

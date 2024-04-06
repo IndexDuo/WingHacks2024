@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5003;
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect("mongodb+srv://linzo75:WwGAMb1OTflA8Ej7@winghacks.wi3akjz.mongodb.net/?retryWrites=true&w=majority&appName=WiNGHacks", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   dbName: 'CelebrityPhotos'
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // '/data' route to send all data in JSON format
-app.get('/data', async (req, res) => {
+app.get('/game', async (req, res) => {
   try {
     // Fetch all data from the 'KPopFaces' collection in the 'CelebrityPhotos' database
     const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();

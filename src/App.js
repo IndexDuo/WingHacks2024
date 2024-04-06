@@ -1,5 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import WelcomeScreen from './components/WelcomeScreen';
+import ModeSelectionScreen from './components/ModeSelectionScreen';
+import GameScreen from './components/GameScreen';
+import FeedbackScreen from './components/FeedbackScreen';
+import ResultScreen from './components/ResultScreen';
+
 
 function App() {
   return (

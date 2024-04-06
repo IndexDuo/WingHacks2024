@@ -45,4 +45,4 @@ const GameScreen = () => {
   )
 };
 
-export default App;
+export default GameScreen;

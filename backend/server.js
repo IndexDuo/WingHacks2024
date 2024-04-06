@@ -20,9 +20,14 @@ app.get('/', (req, res) => {
 
 app.get('/data', async (req, res) => {
   try {
-    // Fetch all data from your MongoDB collection
+    // Fetch all data from the 'KPopFaces' collection in the 'CelebrityPhotos' database
     const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
-    res.json(data);
+    
+    if (data.length === 0) {
+      res.status(404).json({ message: 'No data found in the KPopFaces collection' });
+    } else {
+      res.json(data);
+    }
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).json({ error: 'Error fetching data' });

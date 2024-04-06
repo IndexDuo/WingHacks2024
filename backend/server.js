@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect('mongodb+srv://linzo75:WwGAMb1OTflA8Ej7@winghacks.wi3akjz.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   dbName: 'CelebrityPhotos'

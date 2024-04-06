@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-winghacks2024-dev-c5cc0-authRole",
+      "UnauthRoleArn": "arn:aws:iam::992382616767:role/amplify-winghacks2024-dev-c5cc0-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::992382616767:role/amplify-winghacks2024-dev-c5cc0-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-winghacks2024-dev-c5cc0-deployment",
+      "UnauthRoleName": "amplify-winghacks2024-dev-c5cc0-unauthRole",
+      "StackName": "amplify-winghacks2024-dev-c5cc0",
+      "StackId": "arn:aws:cloudformation:us-east-1:992382616767:stack/amplify-winghacks2024-dev-c5cc0/627bb550-f3ec-11ee-b85d-0e19d195478b",
+      "AmplifyAppId": "d1k8piyaki6fgj"
+    },
+    "categories": {
+      "function": {
+        "winghacks202464b097e5": {
+          "deploymentBucketName": "amplify-winghacks2024-dev-c5cc0-deployment",
+          "s3Key": "amplify-builds/winghacks202464b097e5-54356d594832694a3256-build.zip"
+        }
+      },
+      "api": {
+        "kpopceleb": {}
+      }
+    }
+  }
+}

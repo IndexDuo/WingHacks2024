@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/home-jl" element={<WelcomeScreen />} />
+        <Route path="/" element={<WelcomeScreen />} />
         <Route path="/mode-selection" element={<ModeSelectionScreen />} />
         <Route path="/game" element={<GameScreen />} />
         <Route path="/feedback" element={<FeedbackScreen />} />

@@ -5,8 +5,8 @@ function ModeSelectionScreen() {
   const navigate = useNavigate();
 
   // navigate to other screens
-  const navigateToKpopScreen = () => {
-    navigate('/kpop');
+  const navigateToGameScreen = () => {
+    navigate('/game');
   };
 
   return (
@@ -15,7 +15,7 @@ function ModeSelectionScreen() {
         {/* logo here */}
         <h1>BiasGuessr</h1>
         <p>Can you guess the celebrity?</p>
-        <button onClick={navigateToKpopScreen}>K-POP</button>
+        <button onClick={navigateToGameScreen}>K-Pop</button>
       </header>
     </div>
   );

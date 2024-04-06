@@ -10,7 +10,15 @@ const collectionName = 'kpopIdols';
 
 const urls=[
   "https://www.famousbirthdays.com/people/jungkook.html",
-  "https://www.famousbirthdays.com/people/kim-taehyung.html"
+  "https://www.famousbirthdays.com/people/kim-taehyung.html",
+  "https://www.famousbirthdays.com/people/song-ha-young.html",
+  "https://www.famousbirthdays.com/people/kim-chae-won.html",
+  "https://www.famousbirthdays.com/people/kim-mingyu.html",
+  "https://www.famousbirthdays.com/people/jennie-kim.html",
+  "https://www.famousbirthdays.com/people/hwasa.html",
+  "https://www.famousbirthdays.com/people/kim-jong-in.html",
+  "https://www.famousbirthdays.com/people/lay.html",
+  "https://www.famousbirthdays.com/people/tiffany-hwang.html"
 ]
 // Function to scrape data from a given URL
 async function scrapeData(url) {
@@ -66,7 +74,6 @@ async function scrapeUrls() {
               await collection.insertOne({ name, image });
               console.log(`Data saved for ${name}`);
           } else {
-            await collection.insertOne({ name, image });
               console.log(`Skipping ${name}, already exists.`);
           }
       } catch (error) {
@@ -78,4 +85,3 @@ async function scrapeUrls() {
 }
 
 scrapeUrls();
-

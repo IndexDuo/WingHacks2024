@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './components/WelcomeScreen';
 import ModeSelectionScreen from './components/ModeSelectionScreen';
 import GameScreen from './components/GameScreen';
@@ -9,22 +11,16 @@ import ResultScreen from './components/ResultScreen';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          hello world
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Switch>
+      <Route path="/" exact component={WelcomeScreen} />
+      <Route path="/mode-selection" component={ModeSelectionScreen} />
+      <Route path="/game" component={GameScreen} />
+      <Route path="/feedback" component={FeedbackScreen} />
+      <Route path="/results" component={ResultScreen} />
+      {/* Add more routes as needed */}
+    </Switch>
+  </Router>
   );
 }
 

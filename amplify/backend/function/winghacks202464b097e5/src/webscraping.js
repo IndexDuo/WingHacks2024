@@ -3,8 +3,8 @@ const Apify = require('apify');
 (async () => {
   const requestQueue = await Apify.openRequestQueue();
   const kpopMemberUrls = [
-    'https://www.famousbirthdays.com/people/bts-jin.html',
-    'https://www.famousbirthdays.com/people/bts-suga.html',
+    'https://www.famousbirthdays.com/people/jin.html',
+    'https://www.famousbirthdays.com/people/jungkook.html',
     // Add more member URLs here
   ];
 

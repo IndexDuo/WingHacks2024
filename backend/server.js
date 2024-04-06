@@ -18,8 +18,15 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-app.get('/data', (req, res) => {
-  res.send('send all data');
+app.get('/data', async (req, res) => {
+  try {
+    // Fetch all data from your MongoDB database
+    const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Error fetching data' });
+  }
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

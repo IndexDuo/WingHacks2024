@@ -10,6 +10,11 @@ function HomeScreen() {
     navigate('/kpop');
   };
 
+  //to test voice recognition
+  const navigateToGameScreen = () => {
+    navigate('/game');
+  }
+
   return (
     <div className="App">
       <header className = "App-header">
@@ -17,6 +22,7 @@ function HomeScreen() {
         <h1>BiasGuessr</h1>
         <p>Can you guess the celebrity?</p>
         <button onClick={navigateToKpopScreen}>K-POP</button>
+        <button onClick={navigateToGameScreen}>Voice Recognition</button>
       </header>
     </div>
   );

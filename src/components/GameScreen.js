@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import VoiceRecognition from './VoiceRecognition';
 
 const GameScreen = () => {
+  const handleTranscript = (transcript) => {
+    console.log(transcript);
+  };
+
   const [data, setData] = useState([]);
   const [randomPhoto, setRandomPhoto] = useState(null);
 
@@ -35,8 +40,9 @@ const GameScreen = () => {
         <div>
           <img src={randomPhoto.photoURL} alt="random celebrity"/>        </div>
       )}
+      <VoiceRecognition onTranscriptReceived={handleTranscript} />
     </div>
   )
 };
 
-export default GameScreen;
+export default App;

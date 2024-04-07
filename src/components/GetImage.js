@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import "../styles/GameScreen.css";
 
 const GetImage = ({ onImageChange, type, chosenPhotos}) => { // Add a prop to pass information back to the parent
   const [data, setData] = useState([]);
@@ -39,7 +40,9 @@ const GetImage = ({ onImageChange, type, chosenPhotos}) => { // Add a prop to pa
   };
 
   const getRandomCeleb = () => {
-    const unchosenPhotos = data.filter((photo) => !chosenPhotos.includes(photo._id));
+    const unchosenPhotos = data.filter(
+      (photo) => !chosenPhotos.includes(photo._id)
+    );
 
     if (unchosenPhotos.length === 0) {
       // Reset or handle end-game logic
@@ -57,10 +60,16 @@ const GetImage = ({ onImageChange, type, chosenPhotos}) => { // Add a prop to pa
   console.log("chosen photos in get image,", chosenPhotos);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {randomPhoto && (
         <div className="random-photo">
-           <img src={randomPhoto.image} alt={randomPhoto.name} /> 
+          <img src={randomPhoto.image} alt={randomPhoto.name} />
         </div>
       )}
     </div>

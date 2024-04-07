@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import GetImage from './GetImage'; // Import the GetImage component
-import VoiceRecognition from './VoiceRecognition';
-import { romanizeKorean } from '../utils/romanizeKorean';
-import stringSimilarity from 'string-similarity';
+import React, { useState, useEffect } from "react";
+import GetImage from "./GetImage"; // Import the GetImage component
+import VoiceRecognition from "./VoiceRecognition";
+import { romanizeKorean } from "../utils/romanizeKorean";
+import stringSimilarity from "string-similarity";
 import "../styles/GameScreen.css";
-import { useNavigate, useLocation } from "react-router-dom"; // useLocation removed since it's not used in the provided code
-
+import { useNavigate, useLocation } from "react-router-dom"; 
+import { IoIosArrowBack } from "react-icons/io";
 
 const GameScreen = () => {
   const [isCorrect, setIsCorrect] = useState(null);
@@ -14,8 +14,12 @@ const GameScreen = () => {
   const [randomPhoto, setRandomPhoto] = useState(null); // Details about the current photo
   const [chosenPhotos, setChosenPhotos] = useState([]); // List of photo IDs that have been shown [unused in the provided code
   const navigate = useNavigate();
+  const navigateBack = () => {
+    navigate("/");};
   const location = useLocation();
   const [type, setType] = useState("");  
+
+ 
 
   useEffect(() => {
     const state = location.state;
@@ -56,19 +60,31 @@ const GameScreen = () => {
 
     if (transcript && randomPhoto) {
       const convertedTranscript = romanizeKorean(transcript).toLowerCase();
-      let targetName = randomPhoto.korean ? romanizeKorean(randomPhoto.korean).toLowerCase() : randomPhoto.name.toLowerCase();
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, targetName);
-      console.log("Converted Transcript:", convertedTranscript, "Target Name:", targetName, "Similarity Score:", similarityScore);
+      let targetName = randomPhoto.korean
+        ? romanizeKorean(randomPhoto.korean).toLowerCase()
+        : randomPhoto.name.toLowerCase();
+      const similarityScore = stringSimilarity.compareTwoStrings(
+        convertedTranscript,
+        targetName
+      );
+      console.log(
+        "Converted Transcript:",
+        convertedTranscript,
+        "Target Name:",
+        targetName,
+        "Similarity Score:",
+        similarityScore
+      );
 
       const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
       if (isAnswerCorrect) {
-        setTotalScore(prev => prev + 1);
+        setTotalScore((prev) => prev + 1);
       }
-      setTotalRounds(prev => prev + 1);
+      setTotalRounds((prev) => prev + 1);
 
       // Redirect to /feedback with necessary state information
-      navigate('/feedback', {
+      navigate("/feedback", {
         state: {
           isCorrect: isAnswerCorrect,
           name: randomPhoto.name,
@@ -88,6 +104,9 @@ const GameScreen = () => {
 
   return (
     <div>
+         <button className="back" onClick={navigateBack}>
+        <IoIosArrowBack /> {/* Back icon */}
+      </button>
          <div className="game">
       <h1>Who is this?</h1>
       <p>

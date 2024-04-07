@@ -7,8 +7,8 @@ function HomeScreen() {
   const navigate = useNavigate();
 
   // navigate to badges screens
-  const navigateToBadgesScreen = () => {
-    navigate("/badges");
+  const navigateToAboutScreen = () => {
+    navigate("/about");
   };
 
   // navigate to game
@@ -26,8 +26,8 @@ function HomeScreen() {
           Start Game
         </button>
         <br />
-        <button className="badges-button" onClick={navigateToBadgesScreen}>
-          Badges
+        <button className="badges-button" onClick={navigateToAboutScreen}>
+          About
         </button>
       </header>
     </div>

@@ -1,0 +1,48 @@
+.about {
+    display: flex;
+    justify-content: center; /* Centers children horizontally */
+    align-items: center; /* Centers children vertically */
+    flex-direction: column; /* Stacks children vertically */
+    width: 100%; /* Ensures full width */
+    min-height: 100vh; /* Optional: Makes sure the container is at least the height of the viewport */
+}
+
+.about h1 {
+    font-family: "dream-avenue";
+    margin-bottom: 0;
+    font-size: 50px;
+}
+
+.para {
+    width: 80%;
+}
+
+.team {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    width: 100%; 
+}
+
+.team img {
+    max-width: 100%; 
+    height: auto; 
+    width: auto; 
+}
+
+.member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+}
+
+.member a {
+    text-decoration: none;
+    font-family: "open-sans";
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+}

@@ -8,16 +8,16 @@ const FeedbackScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
+  const {isCorrect, name, chosenPhotos, roundScore, totalScore, totalRounds} = location.state;
+  console.log("is correct", isCorrect);
+  
   const navigateToGameScreen = () => {
-    navigate("/game", { state: chosenPhotos, score, total });
+    navigate("/game", { state: {chosenPhotos, roundScore: 0, totalScore, totalRounds} });
   };
 
   const navigateToResultsScreen = () => {
-    navigate("/results", { state: score, total });
+    navigate("/results", { state: {totalScore, totalRounds }});
   }
-
-  const {isCorrect, name, chosenPhotos, score, total} = location.state;
-  console.log("is correct", isCorrect);
 
   let feedbackMessage;
   let feedbackImage;

@@ -27,10 +27,12 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
       setIsListening(false); // Stop listening on error
     };
 
+    console.log('Starting recognition');
     recognition.start();
 
     // Cleanup on component unmount or stop listening
-    return () => recognition.stop();
+    
+    return () => {recognition.stop(); console.log('stopping recognition');};
   }, [isListening, onTranscriptReceived]);
 
   return (

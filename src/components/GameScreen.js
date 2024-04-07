@@ -53,7 +53,7 @@ const startTimer = () => {
     console.log("Getting random celebrity...");
     const randomIndex = Math.floor(Math.random() * data.length);
     setRandomPhoto(data[randomIndex]);
-    startTimer();
+    //startTimer();
 };
 
 
@@ -89,7 +89,7 @@ const startTimer = () => {
   
 
   const handleTranscript = (transcript) => {
-    if (isTimerActive) {
+    if (!isTimerActive) {
       checkAnswer(transcript);
     }
   };

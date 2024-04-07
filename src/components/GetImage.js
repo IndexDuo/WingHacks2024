@@ -29,7 +29,7 @@ const GetImage = ({ onImageChange, type }) => { // Add a prop to pass informatio
   
     if (type === 'western') {
       try {
-        const response = await fetch('/data2');
+        const response = await fetch('/api/data2');
         const jsonData = await response.json();
         setData(jsonData);
       } catch (e) {

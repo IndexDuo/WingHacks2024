@@ -1,3 +1,23 @@
+.game {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FCF6F6;
+}
+
+.game h1 {
+    font-family: "dream-avenue";
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.game p {
+    text-align:center;
+    width: 340px;
+}
+
 .game-container {
     display: flex;
     flex-wrap: wrap;
@@ -5,13 +25,18 @@
 }
 
 .random-photo {
-    width: calc(33.33% - 20px);
+    width: calc(52% - 20px);
     margin: 10px;
     box-sizing: border-box;
-    border: 5px solid white;
+    border: 5px solid #7D3339;
 }
 
 .random-photo img {
     width: 100%;
     height: auto;
+}
+
+.round {
+    color: black; 
+    background-color: #F6C9CC;
 }

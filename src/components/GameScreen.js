@@ -91,6 +91,7 @@ const startTimer = () => {
     fetchData();
   }, []);
 
+
   const getRandomCeleb = () => {
     setRandomPhoto(null); // Clear the previous photo state
     setIsCorrect(null); // Clear the previous correctness state
@@ -160,7 +161,7 @@ const startTimer = () => {
 
   return (
     <div>
-      <button onClick={getRandomCeleb}>Get Random Celebrity</button>
+      <button onClick={getRandomCeleb}>Begin Round</button>
       <div className="game-container">
       {randomPhoto && (
         <div className="random-photo">

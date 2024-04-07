@@ -7,17 +7,16 @@ import "../styles/FeedbackScreen.css";
 const FeedbackScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // navigate to badges screens
+  
   const navigateToGameScreen = () => {
-    navigate("/game");
+    navigate("/game", { state: chosenPhotos, score, total });
   };
 
-  const navigateToResults = () => {
-    navigate("/results");
-  };
+  const navigateToResultsScreen = () => {
+    navigate("/results", { state: score, total });
+  }
 
-  const { isCorrect, name } = location.state;
+  const {isCorrect, name, chosenPhotos, score, total} = location.state;
   console.log("is correct", isCorrect);
 
   let feedbackMessage;
@@ -43,7 +42,7 @@ const FeedbackScreen = () => {
         NEXT
       </button>
       <br />
-      <button className="exit-button" onClick={navigateToResults}>
+      <button className="exit-button" onClick={navigateToResultsScreen}>
         EXIT
       </button>
     </div>

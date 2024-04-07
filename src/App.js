@@ -11,6 +11,7 @@ import BadgesScreen from "./components/BadgesScreen";
 //lindso branch below
 import Home from "./components/HomeScreen";
 import KpopScreen from "./components/KpopScreen";
+import About from "./components/About";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/feedback" element={<FeedbackScreen />} />
         <Route path="/results" element={<ResultScreen />} />
         <Route path="/badges" element={<BadgesScreen />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );

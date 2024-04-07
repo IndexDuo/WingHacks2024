@@ -12,13 +12,14 @@ const FeedbackScreen = () => {
   console.log("is correct", isCorrect);
   
   const navigateToGameScreen = () => {
-    navigate("/game", { state: {chosenPhotos, roundScore: 0, totalScore, totalRounds, type} });
+    navigate("/game", { state: {totalScore, totalRounds, type, chosenPhotos} });
   };
 
   const navigateToResultsScreen = () => {
     navigate("/results", { state: {totalScore, totalRounds }});
   }
 
+  console.log("chosen photos in feedback,", chosenPhotos);
   let feedbackMessage;
   let feedbackImage;
   if (isCorrect) {

@@ -12,7 +12,7 @@ const GameScreen = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [totalRounds, setTotalRounds] = useState(0);
   const [randomPhoto, setRandomPhoto] = useState(null); // Details about the current photo
-
+  const [chosenPhotos, setChosenPhotos] = useState([]); // List of photo IDs that have been shown [unused in the provided code
   const navigate = useNavigate();
   const location = useLocation();
   const [type, setType] = useState("");  
@@ -31,13 +31,25 @@ const GameScreen = () => {
       if (state.type) {
         setType(state.type);
       }
+      if (state.chosenPhotos) {
+        setChosenPhotos(state.chosenPhotos);
+      }
     }
   }, [location.state]);
 
-  const handleImageChange = (photo) => {
+  const handleImageChange = (photo, selectedPhotoId) => {
     setRandomPhoto(photo);
     setIsCorrect(null);
-  }
+    setChosenPhotos(prevChosenPhotos => {
+      if (prevChosenPhotos.includes(selectedPhotoId)) {
+        return prevChosenPhotos;
+      } else {
+        return [...prevChosenPhotos, selectedPhotoId];
+      }
+    });
+  };
+
+  console.log("chosen photos in game screen,", chosenPhotos);
 
   const checkAnswer = (transcript) => {
     setIsCorrect(null);
@@ -59,9 +71,10 @@ const GameScreen = () => {
       navigate('/feedback', {
         state: {
           isCorrect: isAnswerCorrect,
+          name: randomPhoto.name,
+          chosenPhotos: chosenPhotos,
           totalScore: totalScore + (isAnswerCorrect ? 1 : 0),
           totalRounds: totalRounds + 1,
-          name: randomPhoto.name,
           type: type,
         }
       });
@@ -81,7 +94,7 @@ const GameScreen = () => {
         Click the <strong>Microphone</strong> to say your guess
       </p>
       <div className="game-container">
-      <GetImage onImageChange={handleImageChange} type={type}/>
+      <GetImage onImageChange={handleImageChange} type={type} chosenPhotos={chosenPhotos}/>
       </div>
       <VoiceRecognition onTranscriptReceived={handleTranscript} type={type} />
     </div>

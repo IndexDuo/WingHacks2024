@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const GetImage = ({ onImageChange, type }) => { // Add a prop to pass information back to the parent
+const GetImage = ({ onImageChange, type, chosenPhotos}) => { // Add a prop to pass information back to the parent
   const [data, setData] = useState([]);
   const [randomPhoto, setRandomPhoto] = useState(null);
-  const [chosenPhotos, setChosenPhotos] = useState([]);
+  // const [chosenPhotos, setChosenPhotos] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -49,14 +49,12 @@ const GetImage = ({ onImageChange, type }) => { // Add a prop to pass informatio
     const randomIndex = Math.floor(Math.random() * unchosenPhotos.length);
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto); // Update state to cause re-render
+    //setChosenPhotos((prev) => [...prev, selectedPhoto._id]);
 
-    setChosenPhotos((prev) => [...prev, selectedPhoto._id]);
-
-    const updatedUnchosenPhotos = unchosenPhotos.filter((photo) => photo._id !== selectedPhoto._id);
-    setData(updatedUnchosenPhotos);
-
-    onImageChange(selectedPhoto); // Call the prop function to pass the selected photo details to the parent
+    onImageChange(selectedPhoto, selectedPhoto._id); // Call the prop function to pass the selected photo details to the parent
   };
+
+  console.log("chosen photos in get image,", chosenPhotos);
 
   return (
     <div>

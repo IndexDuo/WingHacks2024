@@ -8,11 +8,11 @@ const FeedbackScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const {isCorrect, name, chosenPhotos, roundScore, totalScore, totalRounds} = location.state;
+  const {isCorrect, name, chosenPhotos, totalScore, totalRounds, type} = location.state;
   console.log("is correct", isCorrect);
   
   const navigateToGameScreen = () => {
-    navigate("/game", { state: {chosenPhotos, roundScore: 0, totalScore, totalRounds} });
+    navigate("/game", { state: {chosenPhotos, roundScore: 0, totalScore, totalRounds, type} });
   };
 
   const navigateToResultsScreen = () => {
@@ -22,7 +22,7 @@ const FeedbackScreen = () => {
   let feedbackMessage;
   let feedbackImage;
   if (isCorrect) {
-    feedbackMessage = <h1>"Correct!"</h1>;
+    feedbackMessage = <h1>Correct!</h1>;
     feedbackImage = CorrectImage;
   } else {
     feedbackMessage = (

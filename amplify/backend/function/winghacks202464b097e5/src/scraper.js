@@ -4,19 +4,42 @@ const { MongoClient } = require("mongodb");
 
 const uri = "mongodb+srv://jing:jingpassword@winghacks.wi3akjz.mongodb.net/";
 const dbName = "CelebrityPhotos";
-const collectionName = "kpopIdols";
+const collectionName = "WesternFaces";
 
 const urls = [
-  "https://www.famousbirthdays.com/people/jungkook.html",
-  "https://www.famousbirthdays.com/people/kim-taehyung.html",
-  "https://www.famousbirthdays.com/people/song-ha-young.html",
-  "https://www.famousbirthdays.com/people/kim-chae-won.html",
-  "https://www.famousbirthdays.com/people/kim-mingyu.html",
-  "https://www.famousbirthdays.com/people/jennie-kim.html",
-  "https://www.famousbirthdays.com/people/hwasa.html",
-  "https://www.famousbirthdays.com/people/kim-jong-in.html",
-  "https://www.famousbirthdays.com/people/lay.html",
-  "https://www.famousbirthdays.com/people/tiffany-hwang.html"
+  "https://www.famousbirthdays.com/people/aubrey-drake-graham.html",
+  "https://www.famousbirthdays.com/people/ariana-grande.html",
+  "https://www.famousbirthdays.com/people/taylor-swift.html",
+  "https://www.famousbirthdays.com/people/katy-perry.html",
+  "https://www.famousbirthdays.com/people/justin-bieber.html",
+  "https://www.famousbirthdays.com/people/rihanna.html",
+  "https://www.famousbirthdays.com/people/beyonce-knowles.html",
+  "https://www.famousbirthdays.com/people/selena-gomez.html",
+  "https://www.famousbirthdays.com/people/kim-kardashian.html",
+  "https://www.famousbirthdays.com/people/kylie-jenner.html",
+  "https://www.famousbirthdays.com/people/kendall-jenner.html",
+  "https://www.famousbirthdays.com/people/kourtney-kardashian.html",
+  "https://www.famousbirthdays.com/people/khloe-kardashian.html",
+  "https://www.famousbirthdays.com/people/kris-jenner.html",
+  "https://www.famousbirthdays.com/people/doja-cat.html",
+  "https://www.famousbirthdays.com/people/megan-thee-stallion.html",
+  "https://www.famousbirthdays.com/people/ice-spice.html",
+  "https://www.famousbirthdays.com/people/emma-watson.html",
+  "https://www.famousbirthdays.com/people/emma-stone.html",
+  "https://www.famousbirthdays.com/people/zendaya-coleman.html",
+  "https://www.famousbirthdays.com/people/scarlett-johansson.html",
+  "https://www.famousbirthdays.com/people/jennifer-lawrence.html",
+  "https://www.famousbirthdays.com/people/angelina-jolie.html",
+  "https://www.famousbirthdays.com/people/mila-kunis.html",
+  "https://www.famousbirthdays.com/people/anne-hathaway.html",
+  "https://www.famousbirthdays.com/people/zayn-malik.html",
+  "https://www.famousbirthdays.com/people/harry-styles.html",
+  "https://www.famousbirthdays.com/people/liam-payne.html",
+  "https://www.famousbirthdays.com/people/louis-tomlinson.html",
+  "https://www.famousbirthdays.com/people/niall-horan.html",
+  "https://www.famousbirthdays.com/people/justin-timberlake.html",
+  "https://www.famousbirthdays.com/people/brad-pitt.html",
+  "https://www.famousbirthdays.com/people/leonardo-dicaprio.html",
 ]
 // Function to scrape data from a given URL
 async function scrapeData(url) {

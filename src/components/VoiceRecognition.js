@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { IoMicSharp } from "react-icons/io5";
 import "../styles/VoiceRecognition.css";
 
-const VoiceRecognition = ({ onTranscriptReceived }) => {
+const VoiceRecognition = ({ onTranscriptReceived, type }) => {
   const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
@@ -13,8 +13,14 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
       window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-    recognition.lang = 'ko'; // detect korean
+    if (type === "kpop") {
+      recognition.lang = 'ko'; // Not guaranteed to work
+    }
 
+    if (type === "western") {
+      recognition.lang = 'en';
+    }
+  
     recognition.interimResults = false;
     recognition.continuous = false; // Set to true if we want it to keep listening after a result
 

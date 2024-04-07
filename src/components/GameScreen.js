@@ -4,26 +4,43 @@ import VoiceRecognition from './VoiceRecognition';
 import { romanizeKorean } from '../utils/romanizeKorean';
 import stringSimilarity from 'string-similarity';
 import "../styles/GameScreen.css";
-import { useNavigate } from "react-router-dom"; // useLocation removed since it's not used in the provided code
+import { useNavigate, useLocation } from "react-router-dom"; // useLocation removed since it's not used in the provided code
+
 
 const GameScreen = () => {
-  const [isTimerActive, setIsTimerActive] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(20); // Check if you need this for a timer feature
   const [totalScore, setTotalScore] = useState(0);
   const [totalRounds, setTotalRounds] = useState(0);
   const [randomPhoto, setRandomPhoto] = useState(null); // Details about the current photo
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const [type, setType] = useState("");  
+
+  useEffect(() => {
+    const state = location.state;
+    if (state) {
+      if (state.totalScore !== undefined) {
+        setTotalScore(state.totalScore);
+      }
+
+      if (state.totalRounds !== undefined) {
+        setTotalRounds(state.totalRounds);
+      }
+
+      if (state.type) {
+        setType(state.type);
+      }
+    }
+  }, [location.state]);
 
   const handleImageChange = (photo) => {
-    setRandomPhoto(photo); // Update state with details from GetImage
-    setIsCorrect(null); // Reset correctness state for new round
-  };
+    setRandomPhoto(photo);
+    setIsCorrect(null);
+  }
 
   const checkAnswer = (transcript) => {
     setIsCorrect(null);
-    setIsTimerActive(false);
 
     if (transcript && randomPhoto) {
       const convertedTranscript = romanizeKorean(transcript).toLowerCase();
@@ -45,6 +62,7 @@ const GameScreen = () => {
           totalScore: totalScore + (isAnswerCorrect ? 1 : 0),
           totalRounds: totalRounds + 1,
           name: randomPhoto.name,
+          type: type,
         }
       });
     } else {
@@ -53,6 +71,7 @@ const GameScreen = () => {
   };
 
   const handleTranscript = (transcript) => checkAnswer(transcript);
+  console.log("type is ", type);
 
   return (
     <div>
@@ -62,9 +81,9 @@ const GameScreen = () => {
         Click the <strong>Microphone</strong> to say your guess
       </p>
       <div className="game-container">
-      <GetImage onImageChange={handleImageChange} />
+      <GetImage onImageChange={handleImageChange} type={type}/>
       </div>
-      <VoiceRecognition onTranscriptReceived={handleTranscript} />
+      <VoiceRecognition onTranscriptReceived={handleTranscript} type={type} />
     </div>
       {isCorrect !== null && (
         <p>{isCorrect ? 'Correct!' : 'Incorrect'}</p>

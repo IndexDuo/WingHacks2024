@@ -36,4 +36,22 @@ app.get('/data', async (req, res) => {
   }
 });
 
+app.get('/data2', async (req, res) => {
+  try {
+    // Fetch all data from the 'KpopIdols' collection in the 'CelebrityPhotos' database
+    const data = await mongoose.connection.db.collection('WesternFaces').find({}).toArray();
+
+    if (data.length === 0) {
+      res.status(404).json({ message: 'No data found in the KpopIdols collection' });
+    } else {
+      res.json(data);
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Error fetching data' });
+  }
+});
+
+
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

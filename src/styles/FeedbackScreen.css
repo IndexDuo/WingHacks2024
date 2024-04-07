@@ -1,0 +1,28 @@
+.feedback {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FCF6F6;
+}
+
+.feedback h1 {
+    text-align:center;
+    font-family: "dream-avenue";
+    font-size:50px;
+}
+
+.feedback p {
+    text-align: center;
+}
+
+.feedback img {
+    width: 80%;
+    padding-bottom: 40px;
+}
+
+.exit-button {
+    border: 3px solid #7D3339;
+    color: #7D3339;
+}

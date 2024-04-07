@@ -42,7 +42,7 @@ const FeedbackScreen = () => {
         NEXT
       </button>
       <br />
-      <button className="exit-button" onClick={navigateToResults}>
+      <button className="exit-button" onClick={navigateToResultsScreen}>
         EXIT
       </button>
     </div>

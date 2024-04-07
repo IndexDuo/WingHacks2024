@@ -1,69 +1,47 @@
-# WiNGHacks2024
+# BiasGuessr
 
-# Celebrity Guessing Game Web App
+# Overview
 
-This document provides a detailed guide to setting up and deploying a mobile-first web app designed to let players guess celebrities' names through voice recognition. The app features two game modes: Western celebrities and K-pop celebrities.
+Guess your favorite K-POP (or western) artists with your voice
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [Front-end Development](#front-end-development)
-  - [React Basics](#react-basics)
-- [Celebrity Photo APIs](#celebrity-photo-apis)
-- [Voice Recognition](#voice-recognition)
-- [Deployment](#deployment)
-- [Step-by-Step Guide](#step-by-step-guide)
-- [Suggestions for an Easier Route](#suggestions-for-an-easier-route)
-- [Final Notes](#final-notes)
+- [General Info](#general-info)
+- [Technologies](#technologies)
+- [Where to Play](#where-to-play)
 
-## Project Overview
+# General Info
 
-The game displays random photos of celebrities, and players guess the names aloud. The app evaluates guesses using voice recognition. Technologies include React (optional), celebrity photo APIs, voice recognition APIs, and a suitable deployment platform for dynamic content.
+## Features
 
-## Front-end Development
+- Choose a game mode between K-POP or Western artists
+- Play for as many rounds as you'd like (or for as many as we have in our database)
+- Got it wrong? The game will tell you who it is!
 
-React is recommended for its efficient handling of dynamic content and user interactions.
+## Team
 
-### React Basics
+<div>
+  <img src="https://github.com/IndexDuo.png" width="80px;"/>
+  &emsp;
+  <img src="https://github.com/lindsey-nielsen.png" width="80px;"/>
+  &emsp;
+  <img src="https://github.com/ca764763.png" width="80px;"/>
+  &emsp;
+  <br />
+  <sub><a href="https://github.com/IndexDuo">Jing Li</a></sub>
+  &emsp;&emsp;
+  <sub><a href="https://github.com/lindsey-nielsen">Lindsey Nielsen</a></sub>
+  &emsp;
+  <sub><a href="https://github.com/ca764763">Cassandra Alvarez</a></sub>
+</div>
 
-- **Initialize:** Use Create React App for setup.
-- **Components:** Create components for different game modes, image display, and feedback.
-- **State Management:** Utilize `useState` and `useEffect` for managing app states and API interactions.
+# Technologies
 
-## Celebrity Photo APIs
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-Identify APIs that offer random celebrity photos. Implement fallback mechanisms for better reliability.
+# Where to Play
 
-- **API Integration:** Use Axios or the Fetch API for requests.
-- **Fallback Solution:** Have a static set of images as a backup.
-
-## Voice Recognition
-
-Google's Web Speech API is a powerful solution for implementing voice recognition.
-
-- **Integration:** Follow the Web Speech API documentation.
-- **Testing:** Ensure the recognition works well with different names and accents.
-
-## Deployment
-
-Platforms like Heroku, Netlify, and Vercel support dynamic web applications well beyond static site capabilities.
-
-## Step-by-Step Guide
-
-1. **Project Setup:** Initialize with Create React App.
-2. **Front End:** Build UI components.
-3. **APIs:** Integrate celebrity photo fetching.
-4. **Voice Recognition:** Add voice recognition for guesses.
-5. **Deploy:** Choose a platform and deploy the app.
-6. **Test:** Conduct thorough testing.
-
-## Suggestions for an Easier Route
-
-- Start with a simpler version focusing on core functionalities.
-- Initially use a static set of images to simplify development.
-- Leverage pre-built React components and libraries.
-
-## Final Notes
-
-Focus on creating a minimal viable product (MVP) within the 36-hour window. Prioritize core features and allow time for deployment and testing.
-
+[Demo the game here](https://www.biasguessr.co/)

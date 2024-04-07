@@ -1,22 +1,18 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import GetImage from './GetImage'; // Import the GetImage component
 import VoiceRecognition from './VoiceRecognition';
-// import * as wanakana from 'wanakana'; this is for japanese
-// import fuzzysort from 'fuzzysort';
-// import Romanizer from './Romanizer';
-import { romanizeKorean } from '../utils/romanizeKorean'; 
+import { romanizeKorean } from '../utils/romanizeKorean';
 import stringSimilarity from 'string-similarity';
 import "../styles/GameScreen.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // useLocation removed since it's not used in the provided code
 
 const GameScreen = () => {
-  const [data, setData] = useState([]);
-  const [randomPhoto, setRandomPhoto] = useState(null);
-  const [chosenPhotos, setChosenPhotos] = useState([]);
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
+  const [timeRemaining, setTimeRemaining] = useState(20); // Check if you need this for a timer feature
   const [totalScore, setTotalScore] = useState(0);
   const [totalRounds, setTotalRounds] = useState(0);
+  const [randomPhoto, setRandomPhoto] = useState(null); // Details about the current photo
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -161,68 +157,53 @@ useEffect(() => {
 };
 
   const checkAnswer = (transcript) => {
-    setIsCorrect(null)
+    setIsCorrect(null);
     setIsTimerActive(false);
-    if (transcript) {
-      const convertedTranscript = romanizeKorean(transcript);
-      console.log("Converted Transcript: " + convertedTranscript);
-      
-    //   const testcompare = "annyeohaseyo"    
-    //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-    let similarityScore;
-      if (randomPhoto.korean) {
-        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.korean);
-      }
-      else {
-        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
-      }
-     
-    // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
-      console.log("Random Photo Name: " + randomPhoto.name);
-      console.log("Similarity Score: " + similarityScore);
-  
-      // Decide on a threshold for correctness. For example, 0.5.
+    if (transcript && randomPhoto) {
+      const convertedTranscript = romanizeKorean(transcript).toLowerCase();
+      let targetName = randomPhoto.korean ? romanizeKorean(randomPhoto.korean).toLowerCase() : randomPhoto.name.toLowerCase();
+      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, targetName);
+      console.log("Converted Transcript:", convertedTranscript, "Target Name:", targetName, "Similarity Score:", similarityScore);
+
       const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
-
       if (isAnswerCorrect) {
-        //handleCorrectAnswer();
+        setTotalScore(prev => prev + 1);
       }
+      setTotalRounds(prev => prev + 1);
 
-      setTimeRemaining(5);
-    setIsTimerActive(false);
-
-
+      // Redirect to /feedback with necessary state information
+      navigate('/feedback', {
+        state: {
+          isCorrect: isAnswerCorrect,
+          totalScore: totalScore + (isAnswerCorrect ? 1 : 0),
+          totalRounds: totalRounds + 1,
+          name: randomPhoto.name,
+        }
+      });
     } else {
-      setIsCorrect(false);
-      setTimeRemaining(5);
-    setIsTimerActive(false);
+      console.log("No transcript or photo available to check.");
     }
   };
-  
-  const handleTranscript = (transcript) => {
-    if (randomPhoto) {
-      checkAnswer(transcript);
-    }
-  };
+
+  const handleTranscript = (transcript) => checkAnswer(transcript);
 
   return (
     <div>
-      <button onClick={getRandomCeleb}>Begin Round</button>
+         <div className="game">
+      <h1>Who is this?</h1>
+      <p>
+        Click the <strong>Microphone</strong> to say your guess
+      </p>
       <div className="game-container">
-      {randomPhoto && (
-        <div className="random-photo">
-          <img src={randomPhoto.image} alt={randomPhoto.name} />
-          {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
-          {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
-          )}
-        </div>
-      )}
+      <GetImage onImageChange={handleImageChange} />
       </div>
-      <VoiceRecognition onTranscriptReceived={handleTranscript}  type={type}/>
-
+      <VoiceRecognition onTranscriptReceived={handleTranscript} />
+    </div>
+      {isCorrect !== null && (
+        <p>{isCorrect ? 'Correct!' : 'Incorrect'}</p>
+      )}
     </div>
   );
 };

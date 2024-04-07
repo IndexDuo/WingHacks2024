@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import GetImage from './GetImage'; // Import the GetImage component
-import VoiceRecognition from './VoiceRecognition';
-import { romanizeKorean } from '../utils/romanizeKorean';
-import stringSimilarity from 'string-similarity';
+import React, { useState, useEffect } from "react";
+import GetImage from "./GetImage"; // Import the GetImage component
+import VoiceRecognition from "./VoiceRecognition";
+import { romanizeKorean } from "../utils/romanizeKorean";
+import stringSimilarity from "string-similarity";
 import "../styles/GameScreen.css";
 import { useNavigate } from "react-router-dom"; // useLocation removed since it's not used in the provided code
 
@@ -27,25 +27,37 @@ const GameScreen = () => {
 
     if (transcript && randomPhoto) {
       const convertedTranscript = romanizeKorean(transcript).toLowerCase();
-      let targetName = randomPhoto.korean ? romanizeKorean(randomPhoto.korean).toLowerCase() : randomPhoto.name.toLowerCase();
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, targetName);
-      console.log("Converted Transcript:", convertedTranscript, "Target Name:", targetName, "Similarity Score:", similarityScore);
+      let targetName = randomPhoto.korean
+        ? romanizeKorean(randomPhoto.korean).toLowerCase()
+        : randomPhoto.name.toLowerCase();
+      const similarityScore = stringSimilarity.compareTwoStrings(
+        convertedTranscript,
+        targetName
+      );
+      console.log(
+        "Converted Transcript:",
+        convertedTranscript,
+        "Target Name:",
+        targetName,
+        "Similarity Score:",
+        similarityScore
+      );
 
       const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
       if (isAnswerCorrect) {
-        setTotalScore(prev => prev + 1);
+        setTotalScore((prev) => prev + 1);
       }
-      setTotalRounds(prev => prev + 1);
+      setTotalRounds((prev) => prev + 1);
 
       // Redirect to /feedback with necessary state information
-      navigate('/feedback', {
+      navigate("/feedback", {
         state: {
           isCorrect: isAnswerCorrect,
           totalScore: totalScore + (isAnswerCorrect ? 1 : 0),
           totalRounds: totalRounds + 1,
           name: randomPhoto.name,
-        }
+        },
       });
     } else {
       console.log("No transcript or photo available to check.");
@@ -55,20 +67,18 @@ const GameScreen = () => {
   const handleTranscript = (transcript) => checkAnswer(transcript);
 
   return (
-    <div>
-         <div className="game">
-      <h1>Who is this?</h1>
-      <p>
-        Click the <strong>Microphone</strong> to say your guess
-      </p>
-      <div className="game-container">
-      <GetImage onImageChange={handleImageChange} />
+    <div className="game-screen">
+      <div className="game">
+        <h1>Who is this?</h1>
+        <p>
+          Click the <strong>Microphone</strong> to say your guess
+        </p>
+        <div className="game-container">
+          <GetImage onImageChange={handleImageChange} />
+        </div>
+        <VoiceRecognition onTranscriptReceived={handleTranscript} />
       </div>
-      <VoiceRecognition onTranscriptReceived={handleTranscript} />
-    </div>
-      {isCorrect !== null && (
-        <p>{isCorrect ? 'Correct!' : 'Incorrect'}</p>
-      )}
+      {isCorrect !== null && <p>{isCorrect ? "Correct!" : "Incorrect"}</p>}
     </div>
   );
 };

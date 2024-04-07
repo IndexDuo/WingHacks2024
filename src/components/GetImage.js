@@ -17,7 +17,7 @@ const GetImage = ({ onImageChange }) => { // Add a prop to pass information back
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/data');
+      const response = await fetch('/api/data');
       const jsonData = await response.json();
       setData(jsonData);
     } catch (e) {

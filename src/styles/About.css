@@ -5,6 +5,7 @@
     flex-direction: column; /* Stacks children vertically */
     width: 100%; /* Ensures full width */
     min-height: 100vh; /* Optional: Makes sure the container is at least the height of the viewport */
+    max-height: 100vh; 
 }
 
 .about h1 {

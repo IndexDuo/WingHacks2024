@@ -4,8 +4,8 @@ import VoiceRecognition from "./VoiceRecognition";
 import { romanizeKorean } from "../utils/romanizeKorean";
 import stringSimilarity from "string-similarity";
 import "../styles/GameScreen.css";
-import { useNavigate, useLocation } from "react-router-dom"; // useLocation removed since it's not used in the provided code
-
+import { useNavigate, useLocation } from "react-router-dom"; 
+import { IoIosArrowBack } from "react-icons/io";
 
 const GameScreen = () => {
   const [isCorrect, setIsCorrect] = useState(null);
@@ -14,8 +14,12 @@ const GameScreen = () => {
   const [randomPhoto, setRandomPhoto] = useState(null); // Details about the current photo
 
   const navigate = useNavigate();
+  const navigateBack = () => {
+    navigate("/");};
   const location = useLocation();
   const [type, setType] = useState("");  
+
+ 
 
   useEffect(() => {
     const state = location.state;
@@ -87,6 +91,9 @@ const GameScreen = () => {
 
   return (
     <div>
+         <button className="back" onClick={navigateBack}>
+        <IoIosArrowBack /> {/* Back icon */}
+      </button>
          <div className="game">
       <h1>Who is this?</h1>
       <p>

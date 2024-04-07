@@ -13,10 +13,10 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
       window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-    recognition.lang = "ko"; // Not guaranteed to work
+    recognition.lang = 'ko'; // detect korean
 
     recognition.interimResults = false;
-    recognition.continuous = false; // Set to true if you want it to keep listening after a result
+    recognition.continuous = false; // Set to true if we want it to keep listening after a result
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
@@ -32,13 +32,8 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
 
     console.log("Starting recognition");
     recognition.start();
-
-    // Cleanup on component unmount or stop listening
-
-    return () => {
-      recognition.stop();
-      console.log("stopping recognition");
-    };
+    
+    return () => {console.log('stopping recognition'); recognition.stop(); };
   }, [isListening, onTranscriptReceived]);
 
   return (

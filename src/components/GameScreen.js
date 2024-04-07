@@ -19,10 +19,12 @@ const GameScreen = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isCorrect !== null) {
-      navigate('/feedback', { state: { isCorrect } });
+    //console.log("game screen is correct is", isCorrect, randomPhoto.name);
+    if (isCorrect !== null && randomPhoto !== null) {
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name } });
     }
-  }, [isCorrect, navigate]);
+  }, [isCorrect, randomPhoto, navigate]);
+
 
 const startTimer = () => {
 
@@ -72,7 +74,7 @@ const startTimer = () => {
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
-    //startTimer();
+    // startTimer();
 };
 
   const checkAnswer = (transcript) => {
@@ -84,14 +86,21 @@ const startTimer = () => {
       
     //   const testcompare = "annyeohaseyo"    
     //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
+    let similarityScore;
+      if (randomPhoto.korean) {
+        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.korean);
+      }
+      else {
+        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
+      }
+     
     // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
       console.log("Random Photo Name: " + randomPhoto.name);
       console.log("Similarity Score: " + similarityScore);
   
       // Decide on a threshold for correctness. For example, 0.5.
-      const isAnswerCorrect = similarityScore >= 0.5;
+      const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
       setTimeRemaining(5);
     setIsTimerActive(false);
@@ -105,11 +114,9 @@ const startTimer = () => {
   };
   
   const handleTranscript = (transcript) => {
-    // if (isTimerActive && randomPhoto) {
-    //   checkAnswer(transcript);
-    // }
-
-    checkAnswer(transcript);
+    if (randomPhoto) {
+      checkAnswer(transcript);
+    }
   };
 
   return (

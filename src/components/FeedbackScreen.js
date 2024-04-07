@@ -5,25 +5,28 @@ const FeedbackScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // navigate to badges screens
   const navigateToGameScreen = () => {
-    navigate("/game");
+    navigate("/game", { state: chosenPhotos, score, total });
   };
-  
-  const {isCorrect, name} = location.state;
+
+  const navigateToResultsScreen = () => {
+    navigate("/results", { state: score, total });
+  }
+
+  const {isCorrect, name, chosenPhotos, score, total} = location.state;
   console.log("is correct", isCorrect);
 
   let feedbackMessage;
   if (isCorrect) {
-    feedbackMessage = "Correct!";
+    feedbackMessage = <h1>"Correct!"</h1>;
   }
   else {
-    feedbackMessage = "Incorrect! The celebrity was " + name + ".";
+    feedbackMessage = <div><h1>Incorrect!</h1><p>The celebrity was {name}.</p></div>;
   }
 
     return (
       <div>Feedback Screen
-        <h1>{feedbackMessage}</h1>
+        {feedbackMessage}
         <button className="game-button" onClick={navigateToGameScreen}>
           Back To Game
         </button>

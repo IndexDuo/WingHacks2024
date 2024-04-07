@@ -15,15 +15,23 @@ const GameScreen = () => {
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
+  const [score, setScore] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    //console.log("game screen is correct is", isCorrect, randomPhoto.name);
-    if (isCorrect !== null && randomPhoto !== null) {
-      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name } });
+    if (isCorrect !== null) {
+      setTotal(total + 1);
+      if (isCorrect) {
+        setScore(score + 1);
+      }
     }
-  }, [isCorrect, randomPhoto, navigate]);
+
+    if (isCorrect !== null && randomPhoto !== null) {
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, score, total } });
+    }
+  }, [isCorrect, randomPhoto, chosenPhotos, score, total, navigate]);
 
 
 const startTimer = () => {

@@ -7,14 +7,8 @@ Guess your favorite K-POP (or western) artists with your voice
 ## Table of Contents
 
 - [General Info](#general-info)
-- [Front-end Development](#front-end-development)
-  - [React Basics](#react-basics)
-- [Celebrity Photo APIs](#celebrity-photo-apis)
-- [Voice Recognition](#voice-recognition)
-- [Deployment](#deployment)
-- [Step-by-Step Guide](#step-by-step-guide)
-- [Suggestions for an Easier Route](#suggestions-for-an-easier-route)
-- [Final Notes](#final-notes)
+- [Technologies](#technologies)
+- [Where to Play](#where-to-play)
 
 # General Info
 

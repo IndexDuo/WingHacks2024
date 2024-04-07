@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    background-color: #FCF6F6;
 }
 
 .mode h1 {
@@ -33,16 +34,36 @@
     content: "";
     position: absolute;
     top: 50%;
-    width: 280%; /* Ensures that each line can extend up to half the container's width */
+    width: 230%;
     height: 1.5px;
     background-color: black;
     z-index: -1; /* Places the lines behind the text */
   }
   
   .or:before {
-    left: -310%; /* Extend to the left */
+    left: -250%; /* Extend to the left */
   }
   
   .or:after {
-    right: -310%; /* Extend to the right */
+    right: -250%; /* Extend to the right */
+  }
+
+  .kpop-button {
+    background-color: #97444A;
+    color: white;
+  }
+  
+  .western-button {
+    background-color: #F6C9CC;
+  }
+
+  .back {
+    align-self: flex-start;
+    border: none; 
+    background: none;
+    cursor: pointer;
+    width: 20%;
+    position: absolute;
+    top: 30px;
+    font-size: 40px;
   }

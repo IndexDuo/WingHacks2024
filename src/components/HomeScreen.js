@@ -13,7 +13,7 @@ function HomeScreen() {
 
   // navigate to game
   const navigateToGameScreen = () => {
-    navigate("/game");
+    navigate("/mode-selection");
   };
 
   return (

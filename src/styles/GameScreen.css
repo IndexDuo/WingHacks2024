@@ -1,0 +1,17 @@
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.random-photo {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    box-sizing: border-box;
+    border: 5px solid white;
+}
+
+.random-photo img {
+    width: 100%;
+    height: auto;
+}

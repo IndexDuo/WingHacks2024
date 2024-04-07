@@ -1,14 +1,12 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { MongoClient } = require('mongodb');
+const axios = require("axios");
+const cheerio = require("cheerio");
+const { MongoClient } = require("mongodb");
 
 const uri = "mongodb+srv://jing:jingpassword@winghacks.wi3akjz.mongodb.net/";
-const dbName = 'CelebrityPhotos';
-const collectionName = 'kpopIdols';
+const dbName = "CelebrityPhotos";
+const collectionName = "kpopIdols";
 
-
-
-const urls=[
+const urls = [
   "https://www.famousbirthdays.com/people/jungkook.html",
   "https://www.famousbirthdays.com/people/kim-taehyung.html",
   "https://www.famousbirthdays.com/people/song-ha-young.html",
@@ -22,44 +20,54 @@ const urls=[
 ]
 // Function to scrape data from a given URL
 async function scrapeData(url) {
-    try {
-        const response = await axios.get(url);
-        const $ = cheerio.load(response.data);
+  try {
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
 
-        // Adjust the selector based on the actual structure of the target webpage
-        const image = $('div.profile-pictures-carousel__slide.slide-0 img').attr('src');
-        const name = $('h1').text().trim();
+    // Adjust the selector based on the actual structure of the target webpage
+    const image = $("div.profile-pictures-carousel__slide.slide-0 img").attr(
+      "src"
+    );
+    const name = $("h1").text().trim();
 
-        if (!image || !name) {
-            throw new Error('Could not extract the image or name from the provided URL.');
-        }
-
-        // Connect to MongoDB
-        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
-
-        const db = client.db(dbName);
-        const collection = db.collection(collectionName);
-
-        // Insert the scraped data into the MongoDB collection
-        const result = await collection.insertOne({ name, image });
-
-        await client.close();
-
-        return {
-            message: 'Data saved successfully',
-            _id: result.insertedId,
-            name,
-            image
-        };
-    } catch (error) {
-        console.error('Scraping or database insertion error:', error);
-        throw error; // Rethrow to handle it in the calling function
+    if (!image || !name) {
+      throw new Error(
+        "Could not extract the image or name from the provided URL."
+      );
     }
+
+    // Connect to MongoDB
+    const client = new MongoClient(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    await client.connect();
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    // Insert the scraped data into the MongoDB collection
+    const result = await collection.insertOne({ name, image });
+
+    await client.close();
+
+    return {
+      message: "Data saved successfully",
+      _id: result.insertedId,
+      name,
+      image,
+    };
+  } catch (error) {
+    console.error("Scraping or database insertion error:", error);
+    throw error; // Rethrow to handle it in the calling function
+  }
 }
 
 async function scrapeUrls() {
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   await client.connect();
   const db = client.db(dbName);
   const collection = db.collection(collectionName);

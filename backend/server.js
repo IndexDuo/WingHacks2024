@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
-
 const app = express();
 const PORT = process.env.PORT || 5001;
 
@@ -24,7 +23,7 @@ app.get('/', (req, res) => {
 app.get('/data', async (req, res) => {
   try {
     // Fetch all data from the 'KpopIdols' collection in the 'CelebrityPhotos' database
-    const data = await mongoose.connection.db.collection('kpopIdols').find({}).toArray();
+    const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
 
     if (data.length === 0) {
       res.status(404).json({ message: 'No data found in the KpopIdols collection' });

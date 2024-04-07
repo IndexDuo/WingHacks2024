@@ -26,6 +26,7 @@ const GameScreen = () => {
 
 
 const startTimer = () => {
+
   setIsTimerActive(true);
   setTimeRemaining(20); // Reset countdown to 5 seconds whenever the timer starts
   const interval = setInterval(() => {
@@ -58,6 +59,7 @@ const startTimer = () => {
 
   const getRandomCeleb = () => {
     setRandomPhoto(null); // Clear the previous photo state
+    setIsCorrect(null); // Clear the previous correctness state
     console.log("Getting random celebrity...");
     const unchosenPhotos = data.filter(photo => !chosenPhotos.includes(photo._id));
 
@@ -75,6 +77,7 @@ const startTimer = () => {
 };
 
   const checkAnswer = (transcript) => {
+    setIsCorrect(null)
     setIsTimerActive(false);
     if (transcript) {
       const convertedTranscript = romanizeKorean(transcript);
@@ -82,7 +85,7 @@ const startTimer = () => {
       
     //   const testcompare = "annyeohaseyo"    
     //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, romanizeKorean((randomPhoto.name).toLowerCase()));
+      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
     // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
       console.log("Random Photo Name: " + randomPhoto.name);
@@ -91,10 +94,14 @@ const startTimer = () => {
       // Decide on a threshold for correctness. For example, 0.5.
       const isAnswerCorrect = similarityScore >= 0.5;
       setIsCorrect(isAnswerCorrect);
+      setTimeRemaining(5);
+    setIsTimerActive(false);
 
 
     } else {
       setIsCorrect(false);
+      setTimeRemaining(5);
+    setIsTimerActive(false);
     }
   };
   
@@ -113,7 +120,8 @@ const startTimer = () => {
           <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct!' : 'Incorrect.'}</p>
+            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
+            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
           )}
         </div>
       )}

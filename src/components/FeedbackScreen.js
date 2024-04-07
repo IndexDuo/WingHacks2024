@@ -1,23 +1,24 @@
 import React from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const FeedbackScreen = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   
   // navigate to badges screens
   const navigateToGameScreen = () => {
     navigate("/game");
   };
   
-  const isCorrect = useParams();
-  console.log(isCorrect);
+  const {isCorrect, name} = location.state;
+  console.log("is correct", isCorrect);
 
   let feedbackMessage;
-  if (isCorrect === 'correct') {
+  if (isCorrect) {
     feedbackMessage = "Correct!";
   }
   else {
-    feedbackMessage = "Incorrect!";
+    feedbackMessage = "Incorrect! The celebrity was " + name + ".";
   }
 
     return (

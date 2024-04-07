@@ -22,7 +22,7 @@ const FeedbackScreen = () => {
   let feedbackMessage;
   let feedbackImage;
   if (isCorrect) {
-    feedbackMessage = <h1>"Correct!"</h1>;
+    feedbackMessage = <h1>Correct!</h1>;
     feedbackImage = CorrectImage;
   } else {
     feedbackMessage = (

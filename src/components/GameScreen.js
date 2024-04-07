@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react';
-import VoiceRecognition from './VoiceRecognition';
+import React, { useState, useEffect } from "react";
+import VoiceRecognition from "./VoiceRecognition";
 // import * as wanakana from 'wanakana'; this is for japanese
 // import fuzzysort from 'fuzzysort';
 // import Romanizer from './Romanizer';
-import { romanizeKorean } from '../utils/romanizeKorean'; 
-import stringSimilarity from 'string-similarity';
+import { romanizeKorean } from "../utils/romanizeKorean";
+import stringSimilarity from "string-similarity";
 import "../styles/GameScreen.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -52,38 +52,50 @@ const GameScreen = () => {
   }, [location.state]);
 
   useEffect(() => {
-
     if (isCorrect !== null && randomPhoto !== null) {
-      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, totalScore: totalScore + (isCorrect ? 1: 0), totalRounds: totalRounds + 1 } });
+      navigate("/feedback", {
+        state: {
+          isCorrect,
+          name: randomPhoto.name,
+          chosenPhotos,
+          totalScore: totalScore + (isCorrect ? 1 : 0),
+          totalRounds: totalRounds + 1,
+        },
+      });
     }
-  }, [isCorrect, randomPhoto, chosenPhotos, roundScore, totalScore, totalRounds, navigate]);
+  }, [
+    isCorrect,
+    randomPhoto,
+    chosenPhotos,
+    roundScore,
+    totalScore,
+    totalRounds,
+    navigate,
+  ]);
 
-
-const startTimer = () => {
-
-  setIsTimerActive(true);
-  setTimeRemaining(20); // Reset countdown to 5 seconds whenever the timer starts
-  const interval = setInterval(() => {
-    setTimeRemaining(prevTime => {
-      if (prevTime <= 1) {
-        clearInterval(interval); // Stop the interval when countdown reaches 0
-        checkAnswer(); // Assuming you want to check the answer when time is up
-        setIsTimerActive(false);
-        return 0;
-      }
-      return prevTime - 1;
-    });
-  }, 1000);
-};
-
+  const startTimer = () => {
+    setIsTimerActive(true);
+    setTimeRemaining(20); // Reset countdown to 5 seconds whenever the timer starts
+    const interval = setInterval(() => {
+      setTimeRemaining((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(interval); // Stop the interval when countdown reaches 0
+          checkAnswer(); // Assuming you want to check the answer when time is up
+          setIsTimerActive(false);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+  };
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/data');
+      const response = await fetch("/data");
       const jsonData = await response.json();
       setData(jsonData);
     } catch (e) {
-      console.error('Error fetching data:', e);
+      console.error("Error fetching data:", e);
     }
   };
 
@@ -91,15 +103,16 @@ const startTimer = () => {
     fetchData();
   }, []);
 
-
   const getRandomCeleb = () => {
     setRandomPhoto(null); // Clear the previous photo state
     setIsCorrect(null); // Clear the previous correctness state
     console.log("Getting random celebrity...");
-    const unchosenPhotos = data.filter(photo => !chosenPhotos.includes(photo._id));
+    const unchosenPhotos = data.filter(
+      (photo) => !chosenPhotos.includes(photo._id)
+    );
 
     if (unchosenPhotos.length === 0) {
-      alert('You have guessed all the celebrities!');
+      alert("You have guessed all the celebrities!");
       // may need more code here to reset the game
       return;
     }
@@ -107,33 +120,38 @@ const startTimer = () => {
     const randomIndex = Math.floor(Math.random() * unchosenPhotos.length);
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
-    setChosenPhotos(prev => [...prev, selectedPhoto._id])
+    setChosenPhotos((prev) => [...prev, selectedPhoto._id]);
     //handleNewImageDisplayed();
     // startTimer();
-};
+  };
 
   const checkAnswer = (transcript) => {
-    setIsCorrect(null)
+    setIsCorrect(null);
     setIsTimerActive(false);
     if (transcript) {
       const convertedTranscript = romanizeKorean(transcript);
       console.log("Converted Transcript: " + convertedTranscript);
-      
-    //   const testcompare = "annyeohaseyo"    
-    //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-    let similarityScore;
+
+      //   const testcompare = "annyeohaseyo"
+      //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
+      let similarityScore;
       if (randomPhoto.korean) {
-        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.korean);
+        similarityScore = stringSimilarity.compareTwoStrings(
+          convertedTranscript,
+          randomPhoto.korean
+        );
+      } else {
+        similarityScore = stringSimilarity.compareTwoStrings(
+          convertedTranscript,
+          randomPhoto.name.toLowerCase()
+        );
       }
-      else {
-        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
-      }
-     
-    // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
+
+      // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
       console.log("Random Photo Name: " + randomPhoto.name);
       console.log("Similarity Score: " + similarityScore);
-  
+
       // Decide on a threshold for correctness. For example, 0.5.
       const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
@@ -143,16 +161,14 @@ const startTimer = () => {
       }
 
       setTimeRemaining(5);
-    setIsTimerActive(false);
-
-
+      setIsTimerActive(false);
     } else {
       setIsCorrect(false);
       setTimeRemaining(5);
-    setIsTimerActive(false);
+      setIsTimerActive(false);
     }
   };
-  
+
   const handleTranscript = (transcript) => {
     if (randomPhoto) {
       checkAnswer(transcript);
@@ -160,21 +176,31 @@ const startTimer = () => {
   };
 
   return (
-    <div>
-      <button onClick={getRandomCeleb}>Begin Round</button>
+    <div className="game">
+      <h1>Who is this?</h1>
+      <p>
+        Click <strong>Begin Round</strong> to get a random celebrity, then click{" "}
+        <strong>Start Listening</strong> to say your guess
+      </p>
       <div className="game-container">
-      {randomPhoto && (
-        <div className="random-photo">
-          <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
-          {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
-          {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
-          )}
-        </div>
-      )}
+        {randomPhoto && (
+          <div className="random-photo">
+            <img src={randomPhoto.image} alt={randomPhoto.name} />
+            {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
+            {isCorrect !== null && (
+              <p>
+                {isCorrect ? "Correct!" : `Incorrect. I'm ${randomPhoto.name}`}
+              </p>
+            )}
+          </div>
+        )}
       </div>
+      <br />
+      <button className="round" onClick={getRandomCeleb}>
+        Begin Round
+      </button>
+      <br />
       <VoiceRecognition onTranscriptReceived={handleTranscript} />
-
     </div>
   );
 };

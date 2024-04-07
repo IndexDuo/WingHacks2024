@@ -150,13 +150,11 @@ const startTimer = () => {
       setIsCorrect(false);
       setTimeRemaining(5);
     setIsTimerActive(false);
-      setTimeRemaining(5);
-    setIsTimerActive(false);
     }
   };
   
   const handleTranscript = (transcript) => {
-    if (!randomPhoto) {
+    if (randomPhoto) {
       checkAnswer(transcript);
     }
   };

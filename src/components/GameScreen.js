@@ -72,7 +72,7 @@ const startTimer = () => {
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
-    startTimer();
+    //startTimer();
 };
 
   const checkAnswer = (transcript) => {
@@ -105,9 +105,11 @@ const startTimer = () => {
   };
   
   const handleTranscript = (transcript) => {
-    if (isTimerActive && randomPhoto) {
-      checkAnswer(transcript);
-    }
+    // if (isTimerActive && randomPhoto) {
+    //   checkAnswer(transcript);
+    // }
+
+    checkAnswer(transcript);
   };
 
   return (
@@ -119,7 +121,6 @@ const startTimer = () => {
           <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
             <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
           )}
         </div>

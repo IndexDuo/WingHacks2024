@@ -19,10 +19,11 @@ const GameScreen = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isCorrect !== null) {
-      navigate('/feedback', { state: { isCorrect } });
+    //console.log("game screen is correct is", isCorrect, randomPhoto.name);
+    if (isCorrect !== null && randomPhoto !== null) {
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name } });
     }
-  }, [isCorrect, navigate]);
+  }, [isCorrect, randomPhoto, navigate]);
 
 
 const startTimer = () => {
@@ -92,7 +93,7 @@ const startTimer = () => {
       console.log("Similarity Score: " + similarityScore);
   
       // Decide on a threshold for correctness. For example, 0.5.
-      const isAnswerCorrect = similarityScore >= 0.5;
+      const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
       setTimeRemaining(5);
     setIsTimerActive(false);
@@ -106,9 +107,9 @@ const startTimer = () => {
   };
   
   const handleTranscript = (transcript) => {
-    if (isTimerActive && randomPhoto) {
+    //if (isTimerActive && randomPhoto) {
       checkAnswer(transcript);
-    }
+   // }
   };
 
   return (

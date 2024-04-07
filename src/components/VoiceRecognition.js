@@ -1,7 +1,7 @@
 // VoiceRecognition.js
 import React, { useState, useEffect } from 'react';
 
-const VoiceRecognition = ({ onTranscriptReceived }) => {
+const VoiceRecognition = ({ onTranscriptReceived, type }) => {
   const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
@@ -10,8 +10,14 @@ const VoiceRecognition = ({ onTranscriptReceived }) => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-    recognition.lang = 'ko'; // Not guaranteed to work
+    if (type === "kpop") {
+      recognition.lang = 'ko'; // Not guaranteed to work
+    }
 
+    if (type === "western") {
+      recognition.lang = 'en';
+    }
+  
     recognition.interimResults = false;
     recognition.continuous = false; // Set to true if you want it to keep listening after a result
 

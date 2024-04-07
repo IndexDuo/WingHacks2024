@@ -17,10 +17,17 @@ const GameScreen = () => {
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
   const [totalScore, setTotalScore] = useState(0);
   const [totalRounds, setTotalRounds] = useState(0);
-  const [roundScore, setRoundScore] = useState(0);
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [type, setType] = useState("");
+  /*
+  const {isCorrectMode, name, chosenPhotosMode, totalScoreMode, totalRoundsMode, type} = location.state;
+  setIsCorrect(isCorrectMode);
+  setChosenPhotos(chosenPhotosMode);
+  setTotalScore(totalScoreMode);
+  setTotalRounds(totalRoundsMode);
+  */
 
   /*
   const handleCorrectAnswer = () => {
@@ -38,6 +45,8 @@ const GameScreen = () => {
   };
   */
 
+  
+
   useEffect(() => {
     const state = location.state;
     if (state) {
@@ -48,15 +57,19 @@ const GameScreen = () => {
       if (state.totalRounds !== undefined) {
         setTotalRounds(state.totalRounds);
       }
+
+      if (state.type) {
+        setType(state.type);
+      }
     }
   }, [location.state]);
 
   useEffect(() => {
 
     if (isCorrect !== null && randomPhoto !== null) {
-      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, totalScore: totalScore + (isCorrect ? 1: 0), totalRounds: totalRounds + 1 } });
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, totalScore: totalScore + (isCorrect ? 1: 0), totalRounds: totalRounds + 1, type } });
     }
-  }, [isCorrect, randomPhoto, chosenPhotos, roundScore, totalScore, totalRounds, navigate]);
+  }, [isCorrect, randomPhoto, chosenPhotos, totalScore, totalRounds, type, navigate]);
 
 
 const startTimer = () => {
@@ -76,20 +89,55 @@ const startTimer = () => {
   }, 1000);
 };
 
+const fetchData = async () => {
 
-  const fetchData = async () => {
+  console.log("type is: " + type);
+  if (type === 'kpop') {
     try {
       const response = await fetch('/data');
+      console.log("inside try");
       const jsonData = await response.json();
       setData(jsonData);
     } catch (e) {
       console.error('Error fetching data:', e);
     }
-  };
+  }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (type === 'western') {
+    try {
+      const response = await fetch('/data2');
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (e) {
+      console.error('Error fetching data:', e);
+    }
+  }
+
+};
+
+useEffect(() => {
+  fetchData();
+}, [type]);
+
+/*
+const state = location.state;
+console.log(location.state);
+useEffect(() => {
+  if (state) {
+    setType(state.type);
+  }
+}, [state]);
+useEffect(() => {
+
+  // This effect will run whenever the `type` state changes
+  if (type === 'kpop' || type === 'western') {
+    // Now you can safely access the `type` state here
+    console.log("Type is:", type);
+    // Call fetchData here after type is set
+    fetchData(type);
+  }
+}, [type]);
+*/
 
 
   const getRandomCeleb = () => {
@@ -165,7 +213,7 @@ const startTimer = () => {
       <div className="game-container">
       {randomPhoto && (
         <div className="random-photo">
-          <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
+          <img src={randomPhoto.image} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
             <p>{isCorrect ? 'Correct!' : `Incorrect. I'm ${randomPhoto.name}`}</p>
@@ -173,7 +221,7 @@ const startTimer = () => {
         </div>
       )}
       </div>
-      <VoiceRecognition onTranscriptReceived={handleTranscript} />
+      <VoiceRecognition onTranscriptReceived={handleTranscript}  type={type}/>
 
     </div>
   );

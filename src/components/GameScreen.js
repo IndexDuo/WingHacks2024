@@ -24,6 +24,7 @@ const GameScreen = () => {
     }
   }, [isCorrect, navigate]);
 
+
 const startTimer = () => {
   setIsTimerActive(true);
   setTimeRemaining(20); // Reset countdown to 5 seconds whenever the timer starts
@@ -70,7 +71,7 @@ const startTimer = () => {
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
-    startTimer();
+    // startTimer();
 };
 
   const checkAnswer = (transcript) => {

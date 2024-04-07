@@ -5,7 +5,7 @@ const ResultScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {score, total} = location.state;
+  const {totalScore, totalRounds} = location.state;
 
   const navigateToHomeScreen = () => {
     navigate("/");
@@ -14,7 +14,7 @@ const ResultScreen = () => {
   return (
     <div>
       <h1>Game Over!</h1>
-      <h2>Your score: {score}/{total}</h2>
+      <h2>Your score: {totalScore}/{totalRounds}</h2>
       <button className="home-button" onClick={navigateToHomeScreen}>
         Back To Home
       </button>

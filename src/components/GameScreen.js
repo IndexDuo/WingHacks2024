@@ -6,7 +6,7 @@ import VoiceRecognition from './VoiceRecognition';
 import { romanizeKorean } from '../utils/romanizeKorean'; 
 import stringSimilarity from 'string-similarity';
 import "../styles/GameScreen.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const GameScreen = () => {
   const [data, setData] = useState([]);
@@ -20,7 +20,9 @@ const GameScreen = () => {
   const [roundScore, setRoundScore] = useState(0);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
+  /*
   const handleCorrectAnswer = () => {
     //console.log("before score change; score is: " + score);
     setRoundScore(roundScore + 1);
@@ -34,11 +36,25 @@ const GameScreen = () => {
     setTotalRounds(totalRounds + 1);
     //console.log("after total change; total is: " + total);
   };
+  */
+
+  useEffect(() => {
+    const state = location.state;
+    if (state) {
+      if (state.totalScore !== undefined) {
+        setTotalScore(state.totalScore);
+      }
+
+      if (state.totalRounds !== undefined) {
+        setTotalRounds(state.totalRounds);
+      }
+    }
+  }, [location.state]);
 
   useEffect(() => {
 
     if (isCorrect !== null && randomPhoto !== null) {
-      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, roundScore, totalScore, totalRounds } });
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, totalScore: totalScore + (isCorrect ? 1: 0), totalRounds: totalRounds + 1 } });
     }
   }, [isCorrect, randomPhoto, chosenPhotos, roundScore, totalScore, totalRounds, navigate]);
 
@@ -75,6 +91,7 @@ const startTimer = () => {
     fetchData();
   }, []);
 
+
   const getRandomCeleb = () => {
     setRandomPhoto(null); // Clear the previous photo state
     setIsCorrect(null); // Clear the previous correctness state
@@ -91,7 +108,7 @@ const startTimer = () => {
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
-    handleNewImageDisplayed();
+    //handleNewImageDisplayed();
     // startTimer();
 };
 
@@ -122,7 +139,7 @@ const startTimer = () => {
       setIsCorrect(isAnswerCorrect);
 
       if (isAnswerCorrect) {
-        handleCorrectAnswer();
+        //handleCorrectAnswer();
       }
 
       setTimeRemaining(5);
@@ -146,7 +163,7 @@ const startTimer = () => {
 
   return (
     <div>
-      <button onClick={getRandomCeleb}>Get Random Celebrity</button>
+      <button onClick={getRandomCeleb}>Begin Round</button>
       <div className="game-container">
       {randomPhoto && (
         <div className="random-photo">

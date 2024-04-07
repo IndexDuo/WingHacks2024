@@ -24,6 +24,28 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  box-sizing:border-box;
+  padding: 10px;
+  width: 100%
+}
+
+/* Adjustments for various screen sizes */
+/* Medium devices (large phones, 375px and up) */
+@media (min-width: 376px) {
+  .App-header {
+    padding: 5% 10%; /* Adjust percentage as needed */
+  }
+}
+
+/* Small devices (phones, less than 375px) */
+@media (max-width: 375px) {
+  .App-header {
+    padding: 5% 5%; /* Reduce padding for very small screens */
+    width: 100vw;
+  height: 100vh;
+  transform: scale(0.9);
+  transform-origin: center;
+  }
 }
 
 .App-link {

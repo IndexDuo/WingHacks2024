@@ -1,0 +1,43 @@
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #FCF6F6;
+}
+
+.circle {
+    width: 292px;
+height: 292px;
+border-radius: 50%;
+background-color: #7D3339;
+display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.result h1 {
+    font-family: "dream-avenue";
+    font-size: 50px;
+}
+
+.result h2 {
+    font-family: "open-sans";
+}
+
+.circle h2 {
+    font-family: "dream-avenue";
+    font-weight:900;
+}
+
+.home-button {
+    border: 3px solid #7D3339;
+    color: #7D3339;
+    background-color:#FCF6F6;
+}
+
+.score {
+    font-size: 100px;
+    color: #FCF6F6;
+}

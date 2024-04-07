@@ -15,23 +15,32 @@ const GameScreen = () => {
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
-  const [score, setScore] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [totalRounds, setTotalRounds] = useState(0);
+  const [roundScore, setRoundScore] = useState(0);
 
   const navigate = useNavigate();
 
+  const handleCorrectAnswer = () => {
+    //console.log("before score change; score is: " + score);
+    setRoundScore(roundScore + 1);
+    setTotalScore(totalScore + 1);
+    //console.log("after score change; score is: " + score);
+  };
+
+  const handleNewImageDisplayed = () => {
+    //console.log("before total change; total is: " + total);
+    setRoundScore(0);
+    setTotalRounds(totalRounds + 1);
+    //console.log("after total change; total is: " + total);
+  };
+
   useEffect(() => {
-    if (isCorrect !== null) {
-      setTotal(total + 1);
-      if (isCorrect) {
-        setScore(score + 1);
-      }
-    }
 
     if (isCorrect !== null && randomPhoto !== null) {
-      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, score, total } });
+      navigate('/feedback', { state: { isCorrect, name: randomPhoto.name, chosenPhotos, roundScore, totalScore, totalRounds } });
     }
-  }, [isCorrect, randomPhoto, chosenPhotos, score, total, navigate]);
+  }, [isCorrect, randomPhoto, chosenPhotos, roundScore, totalScore, totalRounds, navigate]);
 
 
 const startTimer = () => {
@@ -82,6 +91,7 @@ const startTimer = () => {
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto);
     setChosenPhotos(prev => [...prev, selectedPhoto._id])
+    handleNewImageDisplayed();
     // startTimer();
 };
 
@@ -110,6 +120,11 @@ const startTimer = () => {
       // Decide on a threshold for correctness. For example, 0.5.
       const isAnswerCorrect = similarityScore >= 0.25;
       setIsCorrect(isAnswerCorrect);
+
+      if (isAnswerCorrect) {
+        handleCorrectAnswer();
+      }
+
       setTimeRemaining(5);
     setIsTimerActive(false);
 

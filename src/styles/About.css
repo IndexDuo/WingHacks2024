@@ -13,9 +13,6 @@
     margin-bottom: 0;
     font-size: 50px;
 }
-/* p{
-    align-items: center;
-} */
 
 .para {
     width: 80%;
@@ -31,7 +28,7 @@
 
 .team img {
     max-width: 100%; 
-    max-width: 200px;
+    max-height: 200px;
     height: auto; 
     width: auto; 
 }

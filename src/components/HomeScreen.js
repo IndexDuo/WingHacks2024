@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/HomeScreen.css";
-import logo from "../images/Logo.png";
+import logo from "../images/Logo2.png";
 
 function HomeScreen() {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ function HomeScreen() {
     <div className="App">
       <header className="App-header">
         <img src={logo} alt="Bias Guessr Logo" />
+        <br />
         <p>Can you guess the celebrity?</p>
         <button className="game-button" onClick={navigateToGameScreen}>
           Start Game

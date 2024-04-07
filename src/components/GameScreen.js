@@ -5,6 +5,8 @@ import VoiceRecognition from './VoiceRecognition';
 // import Romanizer from './Romanizer';
 import { romanizeKorean } from '../utils/romanizeKorean'; 
 import stringSimilarity from 'string-similarity';
+import "../styles/GameScreen.css";
+import { useNavigate } from "react-router-dom";
 
 const GameScreen = () => {
   const [data, setData] = useState([]);
@@ -14,9 +16,17 @@ const GameScreen = () => {
   const [isCorrect, setIsCorrect] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(5); // Add this state for countdown
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isCorrect !== null) {
+      navigate('/feedback', { state: { isCorrect } });
+    }
+  }, [isCorrect, navigate]);
+
 const startTimer = () => {
   setIsTimerActive(true);
-  setTimeRemaining(30); // Reset countdown to 5 seconds whenever the timer starts
+  setTimeRemaining(20); // Reset countdown to 5 seconds whenever the timer starts
   const interval = setInterval(() => {
     setTimeRemaining(prevTime => {
       if (prevTime <= 1) {
@@ -71,7 +81,7 @@ const startTimer = () => {
       
     //   const testcompare = "annyeohaseyo"    
     //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, romanizeKorean(randomPhoto.name));
+      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, romanizeKorean((randomPhoto.name).toLowerCase()));
     // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
       console.log("Random Photo Name: " + randomPhoto.name);
@@ -96,8 +106,9 @@ const startTimer = () => {
   return (
     <div>
       <button onClick={getRandomCeleb}>Get Random Celebrity</button>
+      <div className="game-container">
       {randomPhoto && (
-        <div>
+        <div className="random-photo">
           <img src={randomPhoto.photoURL} alt={randomPhoto.name} />
           {isTimerActive && <p>Time remaining: {timeRemaining} seconds</p>}
           {isCorrect !== null && (
@@ -105,8 +116,8 @@ const startTimer = () => {
           )}
         </div>
       )}
+      </div>
       <VoiceRecognition onTranscriptReceived={handleTranscript} />
-      
 
     </div>
   );

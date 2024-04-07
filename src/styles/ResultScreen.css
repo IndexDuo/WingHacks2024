@@ -36,3 +36,8 @@ display: flex;
     color: #7D3339;
     background-color:#FCF6F6;
 }
+
+.score {
+    font-size: 100px;
+    color: #FCF6F6;
+}

@@ -18,8 +18,8 @@ const ResultScreen = () => {
       <h2>Here is your score:</h2>
       <br />
       <div className="circle">
-        <h2>
-          {totalScore}/{totalRounds}
+        <h2 className="score">
+          {totalScore} / {totalRounds}
         </h2>
       </div>
       <br />

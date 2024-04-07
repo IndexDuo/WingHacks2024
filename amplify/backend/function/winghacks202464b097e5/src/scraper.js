@@ -16,8 +16,8 @@ const urls = [
   "https://www.famousbirthdays.com/people/hwasa.html",
   "https://www.famousbirthdays.com/people/kim-jong-in.html",
   "https://www.famousbirthdays.com/people/lay.html",
-  "https://www.famousbirthdays.com/people/tiffany-hwang.html",
-];
+  "https://www.famousbirthdays.com/people/tiffany-hwang.html"
+]
 // Function to scrape data from a given URL
 async function scrapeData(url) {
   try {
@@ -73,20 +73,20 @@ async function scrapeUrls() {
   const collection = db.collection(collectionName);
 
   for (const url of urls) {
-    try {
-      const { name, image } = await scrapeData(url);
-
-      // Check if the entry already exists
-      const exists = await collection.findOne({ name });
-      if (!exists) {
-        await collection.insertOne({ name, image });
-        console.log(`Data saved for ${name}`);
-      } else {
-        console.log(`Skipping ${name}, already exists.`);
+      try {
+          const { name, image } = await scrapeData(url);
+          
+          // Check if the entry already exists
+          const exists = await collection.findOne({ name });
+          if (!exists) {
+              await collection.insertOne({ name, image });
+              console.log(`Data saved for ${name}`);
+          } else {
+              console.log(`Skipping ${name}, already exists.`);
+          }
+      } catch (error) {
+          console.error(`Error processing ${url}:`, error);
       }
-    } catch (error) {
-      console.error(`Error processing ${url}:`, error);
-    }
   }
 
   await client.close();

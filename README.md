@@ -1,4 +1,4 @@
-# WingHacks2024
+# WiNGHacks2024
 
 # Celebrity Guessing Game Web App
 

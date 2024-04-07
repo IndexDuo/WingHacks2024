@@ -7,7 +7,7 @@ const ModeSelectionScreen = () => {
   const navigate = useNavigate();
 
   const navigateToKpopScreen = () => {
-    navigate("/kpop");
+    navigate("/game");
   };
 
   const navigateToWesternScreen = () => {

@@ -19,6 +19,7 @@ export default async (req, res) => {
   const { db, client } = await connectToDatabase();
   
   try {
+    // changing collection to KpopIdols
     const data = await db.collection('KPopFaces').find({}).toArray();
     res.status(200).json(data);
   } catch (error) {

@@ -18,7 +18,7 @@ const GetImage = ({ onImageChange, type }) => { // Add a prop to pass informatio
   const fetchData = async () => {
     if (type === 'kpop') {
       try {
-        const response = await fetch('/data');
+        const response = await fetch('/api/data');
         console.log("inside try");
         const jsonData = await response.json();
         setData(jsonData);
@@ -49,7 +49,11 @@ const GetImage = ({ onImageChange, type }) => { // Add a prop to pass informatio
     const randomIndex = Math.floor(Math.random() * unchosenPhotos.length);
     const selectedPhoto = unchosenPhotos[randomIndex];
     setRandomPhoto(selectedPhoto); // Update state to cause re-render
+
     setChosenPhotos((prev) => [...prev, selectedPhoto._id]);
+
+    const updatedUnchosenPhotos = unchosenPhotos.filter((photo) => photo._id !== selectedPhoto._id);
+    setData(updatedUnchosenPhotos);
 
     onImageChange(selectedPhoto); // Call the prop function to pass the selected photo details to the parent
   };

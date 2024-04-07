@@ -6,7 +6,7 @@ const ResultScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { score, total } = location.state;
+  const { totalScore, totalRounds } = location.state;
 
   const navigateToHomeScreen = () => {
     navigate("/");

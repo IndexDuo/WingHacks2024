@@ -86,7 +86,14 @@ const startTimer = () => {
       
     //   const testcompare = "annyeohaseyo"    
     //   console.log("test compare: " + testcompare+ " and converted:"+romanizeKorean(testcompare));
-      const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
+    let similarityScore;
+      if (randomPhoto.korean) {
+        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.korean);
+      }
+      else {
+        similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, randomPhoto.name.toLowerCase());
+      }
+     
     // const similarityScore = stringSimilarity.compareTwoStrings(convertedTranscript, testcompare);
 
       console.log("Random Photo Name: " + randomPhoto.name);
@@ -107,9 +114,9 @@ const startTimer = () => {
   };
   
   const handleTranscript = (transcript) => {
-    //if (isTimerActive && randomPhoto) {
+    if (randomPhoto) {
       checkAnswer(transcript);
-   // }
+    }
   };
 
   return (

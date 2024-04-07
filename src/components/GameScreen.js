@@ -179,8 +179,8 @@ const GameScreen = () => {
     <div className="game">
       <h1>Who is this?</h1>
       <p>
-        Click <strong>Begin Round</strong> to get a random celebrity, then click{" "}
-        <strong>Start Listening</strong> to say your guess
+        Click <strong>Begin Round</strong> to get a random celebrity, then click
+        the <strong>Microphone</strong> to say your guess
       </p>
       <div className="game-container">
         {randomPhoto && (

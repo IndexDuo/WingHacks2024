@@ -44,4 +44,4 @@ Guess your favorite K-POP (or western) artists with your voice
 
 # Where to Play
 
-[Demo the game here](https://www.biasguessr.co/)
+[Demo the game here](https://wing-hacks2024.vercel.app/)

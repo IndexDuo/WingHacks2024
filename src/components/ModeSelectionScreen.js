@@ -1,17 +1,9 @@
 import React from "react";
-import { useNavigate, useState } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/ModeSelectionScreen.css";
 import { IoIosArrowBack } from "react-icons/io";
 
 const ModeSelectionScreen = () => {
-  /*
-  let chosenPhotosMode = [];
-  let isCorrectMode = null; 
-  let totalScoreMode = 0;
-  let totalRoundsMode = 0;
-  let randomPhotoMode = null;
-  */
-
   const navigate = useNavigate();
   
   const navigateToGameScreen = (type) => {
@@ -24,33 +16,30 @@ const ModeSelectionScreen = () => {
     }});
   };
 
-  /*
-  const navigateToWesternScreen = () => {
-    navigate("/game", {state: { type: "western"}});
-  };
-  */
-
   const navigateBack = () => {
     navigate("/");
   };
   return (
-    <div className="mode">
-      <button className="back" onClick={navigateBack}>
-        <IoIosArrowBack /> {/* Back icon */}
+    <main className="mode-screen">
+      <button aria-label="Back to home" className="mode-back" onClick={navigateBack}>
+        <IoIosArrowBack aria-hidden="true" />
       </button>
-      <h1>Choose game mode</h1>
-      <br />
-      <br />
-      <button className="kpop-button" onClick={() => navigateToGameScreen("kpop")}>
-        Kpop
-      </button>
-      <div className="or-container">
-        <p className="or">OR</p>
-      </div>
-      <button className="western-button" onClick={() => navigateToGameScreen("western")}>
-        Western
-      </button>
-    </div>
+      <section className="mode-card">
+        <p className="mode-eyebrow">Choose your lineup</p>
+        <h1>Who do you know best?</h1>
+        <p className="mode-intro">Each round shows one face. Say or type the celebrity’s name to score.</p>
+        <div className="mode-options">
+          <button className="mode-option mode-option--kpop" onClick={() => navigateToGameScreen("kpop")}>
+            <strong>K-pop</strong>
+            <span>Idols and artists</span>
+          </button>
+          <button className="mode-option mode-option--western" onClick={() => navigateToGameScreen("western")}>
+            <strong>Western</strong>
+            <span>Music, film, and pop culture</span>
+          </button>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -1,62 +1,30 @@
-@import url(./styles/HomeScreen.css);
+* { box-sizing: border-box; }
 
-.App {
+html { background: #fcf7f8; }
+body { color: #29232d; margin: 0; }
+button, input { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid rgba(109, 83, 160, .45); outline-offset: 3px; }
+
+.desktop-notice {
+  align-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(191,180,216,.55), transparent 25rem),
+    radial-gradient(circle at 80% 80%, rgba(246,201,204,.75), transparent 28rem),
+    #fcf7f8;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.desktop-notice > svg { color: #7d3339; font-size: 64px; }
+.desktop-notice__eyebrow { color: #8f3f55; font-size: .75rem; font-weight: 800; letter-spacing: .14em; margin: 24px 0 8px; text-transform: uppercase; }
+.desktop-notice h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.6rem, 5vw, 5.2rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; margin: 0; max-width: 780px; }
+.desktop-notice > p:last-child { color: #6f6774; font-size: 1.05rem; line-height: 1.65; max-width: 490px; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #FCF6F6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
-  box-sizing:border-box;
-  padding: 10px;
-  width: 100%
-}
-
-/* Adjustments for various screen sizes */
-/* Medium devices (large phones, 375px and up) */
-@media (min-width: 376px) {
-  .App-header {
-    padding: 5% 10%; /* Adjust percentage as needed */
-  }
-}
-
-/* Small devices (phones, less than 375px) */
-@media (max-width: 375px) {
-  .App-header {
-    padding: 5% 5%; /* Reduce padding for very small screens */
-    width: 100vw;
-  height: 100vh;
-  transform: scale(0.9);
-  transform-origin: center;
-  }
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media (min-width: 501px) {
+  .desktop-notice { display: flex; }
+  .mobile-experience { display: none; }
 }

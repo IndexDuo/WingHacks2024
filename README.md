@@ -2,7 +2,7 @@
 
 # Overview
 
-Guess your favorite K-POP (or western) artists with your voice
+Guess K-pop and Western celebrities in a fast, mobile voice game. English pronunciations and typed answers are supported.
 
 ## Table of Contents
 
@@ -44,4 +44,12 @@ Guess your favorite K-POP (or western) artists with your voice
 
 # Where to Play
 
-[Demo the game here](https://wing-hacks2024.vercel.app/)
+[Play BiasGuessr](https://wing-hacks2024.vercel.app/)
+
+## Local setup
+
+1. Copy `.env.example` to `.env` and add a read-only MongoDB Atlas connection string.
+2. Run `npm install`.
+3. Run `npm run server` and `npm start` in separate terminals.
+
+Vercel deployments require `MONGODB_URI`. `MONGODB_DB_NAME` is optional and defaults to `CelebrityPhotos`.

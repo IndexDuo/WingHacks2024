@@ -1,70 +1,21 @@
-.mode {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #FCF6F6;
+.mode-screen {
+  align-items: center;
+  background: radial-gradient(circle at 80% 0, rgba(191,180,216,.55), transparent 21rem), #fcf7f8;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 68px 16px 24px;
+  position: relative;
 }
 
-.mode h1 {
-    font-family: "dream-avenue";
-    font-size: 50px;
-    text-align: center;
-}
-
-.or-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .or {
-    font-size: 25px;
-    font-weight: 600;
-    position: relative;
-    padding: 0 10px; /* Adjust this padding if necessary */
-    z-index: 1;
-  }
-  
-  .or:before,
-  .or:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 230%;
-    height: 1.5px;
-    background-color: black;
-    z-index: -1; /* Places the lines behind the text */
-  }
-  
-  .or:before {
-    left: -250%; /* Extend to the left */
-  }
-  
-  .or:after {
-    right: -250%; /* Extend to the right */
-  }
-
-  .kpop-button {
-    background-color: #97444A;
-    color: white;
-  }
-  
-  .western-button {
-    background-color: #F6C9CC;
-    color: black;
-  }
-
-  .back {
-    align-self: flex-start;
-    border: none; 
-    background: none;
-    cursor: pointer;
-    width: 20%;
-    position: absolute;
-    top: 30px;
-    font-size: 40px;
-  }
+.mode-back { align-items: center; background: rgba(255,255,255,.75); border: 1px solid rgba(125,51,57,.15); border-radius: 50%; color: #29232d; cursor: pointer; display: flex; font-size: 25px; height: 44px; justify-content: center; left: 16px; padding: 0; position: absolute; top: 16px; width: 44px; }
+.mode-card { max-width: 420px; text-align: center; width: 100%; }
+.mode-eyebrow { color: #8f3f55; font-size: .7rem; font-weight: 800; letter-spacing: .13em; margin: 0 0 10px; text-transform: uppercase; }
+.mode-card h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.6rem, 12vw, 3.8rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; margin: 0 0 16px; }
+.mode-intro { color: #6f6774; line-height: 1.6; margin: 0 auto; max-width: 350px; }
+.mode-options { display: grid; gap: 13px; margin-top: 34px; }
+.mode-option { align-items: flex-start; border: 0; border-radius: 20px; box-shadow: 0 14px 34px rgba(77,42,55,.12); cursor: pointer; display: flex; flex-direction: column; min-height: 118px; padding: 24px; text-align: left; width: 100%; }
+.mode-option strong { font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 500; }
+.mode-option span { font-size: .82rem; margin-top: 6px; opacity: .78; }
+.mode-option--kpop { background: linear-gradient(135deg, #7d3339, #9e5260); color: #fff; }
+.mode-option--western { background: linear-gradient(135deg, #d8cfea, #f4d8dd); color: #342b38; }

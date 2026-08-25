@@ -1,50 +1,116 @@
-.game-screen {
-    display:flex;
-    align-items: center;
-    justify-content: center;
+:root {
+  --ink: #29232d;
+  --muted: #6f6774;
+  --berry: #7d3339;
 }
 
-.game {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #FCF6F6;
+.game-shell {
+  background: radial-gradient(circle at 0 0, rgba(191, 180, 216, 0.4), transparent 24rem), #fcf7f8;
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 14px 12px 26px;
 }
 
-.game h1 {
-    font-family: "dream-avenue";
-    font-size: 50px;
-    margin-bottom: 0;
+.game-shell--centered { align-items: center; display: flex; justify-content: center; }
+.game-topbar { align-items: center; display: grid; grid-template-columns: 1fr auto 1fr; margin: 0 auto 10px; max-width: 500px; }
+
+.icon-button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(125, 51, 57, 0.13);
+  border-radius: 50%;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font-size: 25px;
+  height: 44px;
+  justify-content: center;
+  padding: 0;
+  width: 44px;
 }
 
-.game p {
-    text-align:center;
+.mode-pill {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(125, 51, 57, 0.13);
+  border-radius: 999px;
+  color: #675e6c;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  padding: 8px 12px;
+  text-transform: uppercase;
 }
 
-.game-container {
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.scoreboard { align-items: flex-end; display: flex; flex-direction: column; justify-self: end; line-height: 1; }
+.scoreboard span { color: var(--muted); font-size: 0.67rem; text-transform: uppercase; }
+.scoreboard strong { font-size: 1.2rem; margin-top: 5px; }
+
+.round-card {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(125, 51, 57, 0.12);
+  border-radius: 26px;
+  box-shadow: 0 20px 60px rgba(74, 43, 55, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0 auto;
+  max-width: 500px;
+  min-height: calc(100vh - 82px);
+  padding: 22px 18px 26px;
 }
 
-.random-photo {
-    width: calc(52% - 20px);
-    margin: 10px;
-    box-sizing: border-box;
-    border: 5px solid #7D3339;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.round-copy { text-align: center; }
+.eyebrow, .feedback-kicker { color: #8f3f55; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.round-copy h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.35rem, 11vw, 3.4rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.95; margin: 9px 0 12px; }
+.round-copy p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 auto; max-width: 390px; }
+
+.celebrity-frame {
+  background: #e9e3eb;
+  border: 7px solid #fff;
+  border-radius: 21px;
+  box-shadow: 0 15px 40px rgba(57, 37, 50, 0.18);
+  height: clamp(255px, 39vh, 365px);
+  overflow: hidden;
+  position: relative;
+  width: min(100%, 350px);
 }
 
-.random-photo img {
-    width: 100%;
-    height: auto;
+.celebrity-frame::after { border: 1px solid rgba(255,255,255,.5); border-radius: 14px; content: ""; inset: 8px; pointer-events: none; position: absolute; }
+.celebrity-frame img { display: block; height: 100%; object-fit: cover; padding: 0; width: 100%; }
+.answer-panel { max-width: 390px; width: 100%; }
+
+.answer-divider { align-items: center; color: #908791; display: flex; font-size: 0.67rem; font-weight: 750; gap: 10px; letter-spacing: 0.08em; margin: 7px 0; text-transform: uppercase; }
+.answer-divider::before, .answer-divider::after { background: #e6dce1; content: ""; flex: 1; height: 1px; }
+
+.typed-answer { align-items: center; background: #fff; border: 1px solid #dfd5da; border-radius: 13px; display: flex; gap: 7px; padding: 5px 5px 5px 12px; }
+.typed-answer > svg { color: #8b7d8a; flex: 0 0 auto; font-size: 20px; }
+.typed-answer input { background: transparent; border: 0; color: var(--ink); flex: 1; font: inherit; min-width: 0; outline: 0; padding: 10px 2px; }
+.typed-answer:focus-within { border-color: #9b7da5; box-shadow: 0 0 0 4px rgba(155,125,165,.12); }
+.typed-answer button, .primary-button, .secondary-button { background: var(--berry); border: 0; border-radius: 10px; color: #fff; cursor: pointer; font: inherit; font-weight: 750; height: auto; padding: 11px 15px; text-transform: none; width: auto; }
+.typed-answer button:disabled { cursor: default; opacity: 0.38; }
+
+.feedback-card { border-left: 4px solid #bb5267; max-width: 390px; padding: 5px 0 5px 18px; width: 100%; }
+.feedback-card.is-correct { border-left-color: #4a9271; }
+.feedback-card h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 11vw, 3.8rem); font-weight: 500; letter-spacing: -.035em; line-height: 1; margin: 8px 0 10px; }
+.feedback-card p { color: var(--muted); line-height: 1.5; }
+.feedback-actions { align-items: center; display: flex; gap: 12px; margin-top: 20px; }
+.text-button { background: transparent; border: 0; color: #6d626b; cursor: pointer; font: inherit; font-weight: 700; height: auto; padding: 10px; text-transform: none; width: auto; }
+
+.load-card { background: #fff; border-radius: 22px; box-shadow: 0 20px 60px rgba(74,43,55,.12); max-width: 430px; padding: 38px 26px; text-align: center; }
+.load-card > svg { color: #9b7da5; font-size: 34px; }
+.load-card h1 { font-family: Georgia, serif; font-size: 2rem; font-weight: 500; }
+.load-card p { color: var(--muted); line-height: 1.6; }
+.sr-only { clip: rect(0,0,0,0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+
+@media (max-width: 370px), (max-height: 720px) {
+  .round-card { gap: 13px; padding-top: 17px; }
+  .round-copy h1 { font-size: 2.25rem; }
+  .round-copy p { font-size: .82rem; }
+  .celebrity-frame { height: clamp(220px, 35vh, 285px); }
 }
 
-.round {
-    color: black; 
-    background-color: #F6C9CC;
+@media (max-width: 360px) {
+  .feedback-actions { align-items: stretch; flex-direction: column; }
+  .primary-button { width: 100%; }
 }

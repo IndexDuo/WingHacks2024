@@ -1,49 +1,28 @@
-/* Reset default margin and padding */
-html, body {
-    margin: 0;
-    padding: 0;
-  }
-  
-
-  /* Ensure html and body are full height */
-  html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden; /* Prevent scrolling */
-  }
-  
-
-  
-  .App-header {
-    text-align: center;
-  }
-
-.game-button {
-  background-color: #97444A;
-  color: white;
+.home-screen {
+  align-items: center;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(191,180,216,.58), transparent 19rem),
+    radial-gradient(circle at 88% 88%, rgba(246,201,204,.82), transparent 23rem),
+    #fcf7f8;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px 16px;
 }
 
-.badges-button {
-  background-color: #F6C9CC;
-  color: black;
-}
+.home-card { align-items: center; display: flex; flex-direction: column; max-width: 430px; text-align: center; width: 100%; }
+.home-eyebrow { color: #8f3f55; font-size: .69rem; font-weight: 800; letter-spacing: .12em; margin: 0 0 16px; text-transform: uppercase; }
+.home-logo { height: auto; max-width: 255px; padding: 0; width: 68%; }
+.home-card h1 { color: #29232d; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.7rem, 13vw, 4rem); font-weight: 500; letter-spacing: -.05em; line-height: .98; margin: 22px 0 15px; }
+.home-intro { color: #6f6774; font-size: .97rem; line-height: 1.6; margin: 0; max-width: 350px; }
+.home-actions { display: grid; gap: 10px; margin-top: 28px; width: 100%; }
+.home-actions button { border-radius: 14px; cursor: pointer; font-weight: 800; min-height: 58px; padding: 14px 20px; text-transform: none; width: 100%; }
+.game-button { background: #7d3339; border: 2px solid #7d3339; color: #fff; }
+.about-button { background: rgba(255,255,255,.58); border: 2px solid rgba(125,51,57,.25); color: #5f333c; }
+.home-note { color: #847b85; font-size: .72rem; margin: 16px 0 0; }
 
-button {
-  width: 344px;
-height: 85px;
-border: none;
-border-radius: 15px;
-font-size: 25px;
-font-family: "open-sans";
-font-weight:650;
-text-transform: uppercase;
-}
-
-img {
-  padding: 0;
-  width: 335px;
-}
-
-p {
-  font-family: "open-sans";
+@media (max-height: 680px) {
+  .home-logo { max-width: 185px; }
+  .home-card h1 { font-size: 2.55rem; margin-top: 13px; }
+  .home-actions { margin-top: 18px; }
 }

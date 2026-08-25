@@ -1,43 +1,12 @@
-.result {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #FCF6F6;
-}
-
-.circle {
-    width: 292px;
-height: 292px;
-border-radius: 50%;
-background-color: #7D3339;
-display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;
-}
-
-.result h1 {
-    font-family: "dream-avenue";
-    font-size: 50px;
-}
-
-.result h2 {
-    font-family: "open-sans";
-}
-
-.circle h2 {
-    font-family: "dream-avenue";
-    font-weight:900;
-}
-
-.home-button {
-    border: 3px solid #7D3339;
-    color: #7D3339;
-    background-color:#FCF6F6;
-}
-
-.score {
-    font-size: 100px;
-    color: #FCF6F6;
-}
+.result-screen { align-items: center; background: radial-gradient(circle at 50% 10%, rgba(191,180,216,.62), transparent 22rem), #fcf7f8; display: flex; justify-content: center; min-height: 100vh; padding: 22px 16px; }
+.result-card { align-items: center; display: flex; flex-direction: column; max-width: 420px; text-align: center; width: 100%; }
+.result-eyebrow { color: #8f3f55; font-size: .71rem; font-weight: 800; letter-spacing: .14em; margin: 0 0 11px; text-transform: uppercase; }
+.result-card h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.65rem, 12vw, 3.8rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; margin: 0 0 27px; }
+.score-circle { align-items: center; background: linear-gradient(145deg, #8f3f55, #67283c); border: 8px solid #fff; border-radius: 50%; box-shadow: 0 18px 50px rgba(103,40,60,.25); color: #fff; display: flex; flex-direction: column; height: 190px; justify-content: center; width: 190px; }
+.score-circle strong { font-family: Georgia, "Times New Roman", serif; font-size: 4.8rem; font-weight: 500; line-height: .9; }
+.score-circle span { font-size: .78rem; margin-top: 10px; opacity: .8; text-transform: uppercase; }
+.result-message { color: #6f6774; margin: 24px 0; }
+.result-actions { display: grid; gap: 10px; width: 100%; }
+.result-actions button { border-radius: 14px; cursor: pointer; font-weight: 800; min-height: 56px; text-transform: none; width: 100%; }
+.result-primary { background: #7d3339; border: 2px solid #7d3339; color: #fff; }
+.result-secondary { background: transparent; border: 2px solid rgba(125,51,57,.25); color: #6a3440; }

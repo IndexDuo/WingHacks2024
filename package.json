@@ -2,6 +2,9 @@
   "name": "winghacks2024",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "proxy": "http://localhost:5001",
   "dependencies": {
     "@react-navigation/native-stack": "^6.9.26",
@@ -35,7 +38,7 @@
     "server": "node backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "start:dev": "cross-env REACT_APP_API_URL=http://localhost:5001/data react-scripts start",
-   "build:prod": "cross-env REACT_APP_API_URL=https://www.biasguessr.co/api/data react-scripts build"
+    "build:prod": "react-scripts build"
   
     
   },

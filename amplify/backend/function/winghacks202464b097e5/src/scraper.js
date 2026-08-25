@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb+srv://jing:jingpassword@winghacks.wi3akjz.mongodb.net/";
+const uri = process.env.MONGODB_URI;
 const dbName = "CelebrityPhotos";
 const collectionName = "WesternFaces";
 

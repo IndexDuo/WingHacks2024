@@ -1,32 +1,7 @@
+html { min-height: 100%; }
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* fonts */
-
-/* headings */
-@font-face {
-  font-family: 'dream-avenue';
-  src: url('/assets/fonts/FontsFree-Net-Dream-Avenue.ttf');
-}
-
-/* body */
-@font-face {
-  font-family: 'open-sans';
-  src: url('/assets/fonts/OpenSans-VariableFont_wdth\,wght.ttf');
-}
-
-@font-face {
-  font-family: 'open-sans-italic';
-  src: url('/assets/fonts/OpenSans-Italic-VariableFont_wdth\,wght.ttf');
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100%;
 }

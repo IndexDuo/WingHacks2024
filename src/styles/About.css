@@ -1,50 +1,17 @@
-.about {
-    display: flex;
-    justify-content: center; /* Centers children horizontally */
-    align-items: center; /* Centers children vertically */
-    flex-direction: column; /* Stacks children vertically */
-    width: 100%; /* Ensures full width */
-    min-height: 100vh; /* Optional: Makes sure the container is at least the height of the viewport */
-    max-height: 100vh; 
-}
-
-.about h1 {
-    font-family: "dream-avenue";
-    margin-bottom: 0;
-    font-size: 50px;
-}
-
-.para {
-    width: 80%;
-}
-
-.team {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; 
-    width: 100%; 
-}
-
-.team img {
-    max-width: 100%; 
-    max-height: 200px;
-    height: auto; 
-    width: auto; 
-}
-
-.member {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    width: 100%; 
-}
-
-.member a {
-    text-decoration: none;
-    font-family: "open-sans";
-    color: black;
-    text-transform: uppercase;
-    font-weight: bold;
-}
+.about-screen { background: radial-gradient(circle at 100% 0, rgba(191,180,216,.54), transparent 20rem), #fcf7f8; min-height: 100vh; padding: 68px 18px 30px; position: relative; }
+.about-back { align-items: center; background: rgba(255,255,255,.78); border: 1px solid rgba(125,51,57,.15); border-radius: 50%; color: #29232d; cursor: pointer; display: flex; font-size: 25px; height: 44px; justify-content: center; left: 16px; padding: 0; position: absolute; top: 16px; width: 44px; }
+.about-card { margin: 0 auto; max-width: 420px; }
+.about-eyebrow { color: #8f3f55; font-size: .7rem; font-weight: 800; letter-spacing: .13em; margin: 0 0 10px; text-transform: uppercase; }
+.about-card h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.8rem, 13vw, 4rem); font-weight: 500; letter-spacing: -.05em; line-height: .95; margin: 0 0 18px; }
+.about-lead { color: #6f6774; line-height: 1.6; margin: 0; }
+.rules-list { display: grid; gap: 15px; list-style: none; margin: 27px 0; padding: 0; }
+.rules-list li { align-items: center; display: flex; gap: 14px; }
+.rules-list span { align-items: center; background: #f2dfe4; border-radius: 50%; color: #7d3339; display: flex; flex: 0 0 auto; font-size: .8rem; font-weight: 800; height: 34px; justify-content: center; width: 34px; }
+.rules-list p { color: #433a45; line-height: 1.45; margin: 0; }
+.pronunciation-note { background: #fff; border: 1px solid rgba(125,51,57,.12); border-radius: 18px; box-shadow: 0 12px 34px rgba(74,43,55,.08); padding: 20px; }
+.pronunciation-note strong { color: #7d3339; }
+.pronunciation-note p { color: #6f6774; font-size: .88rem; line-height: 1.55; margin: 7px 0 0; }
+.team-links { border-top: 1px solid #e5dce1; margin-top: 28px; padding-top: 20px; }
+.team-links > p { color: #827983; font-size: .78rem; margin: 0 0 10px; }
+.team-links > div { display: flex; gap: 18px; }
+.team-links a { color: #5f3440; font-size: .86rem; font-weight: 800; text-decoration: none; }

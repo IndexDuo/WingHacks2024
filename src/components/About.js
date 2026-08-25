@@ -1,5 +1,4 @@
 import React from "react";
-import star from "../images/Colored_Badge.png";
 import "../styles/About.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -10,40 +9,33 @@ const About = () => {
     navigate("/");
   };
   return (
-    <div className="about">
-      <button className="back" onClick={navigateBack}>
-        <IoIosArrowBack /> {/* Back icon */}
+    <main className="about-screen">
+      <button aria-label="Back to home" className="about-back" onClick={navigateBack}>
+        <IoIosArrowBack aria-hidden="true" />
       </button>
-      <h1>About the app</h1>
-      <div className="para">
-        <p>
-          Say the name of the celebrity and see if you're correct! We use voice
-          recognition to see if you got it right.
-        </p>
-      </div>
-      <h1>Team Members</h1>
-      <p>Click our names to go to our GitHub!</p>
-      <div className="team">
-        <div className="member">
-          <img src={star} alt="hi" />
-          <a href="https://github.com/IndexDuo" target="_blank">
-            Jing
-          </a>
+      <section className="about-card">
+        <p className="about-eyebrow">How to play</p>
+        <h1>Fast face.<br />Faster answer.</h1>
+        <p className="about-lead">BiasGuessr is a quick-fire character quiz inspired by Korean variety shows.</p>
+        <ol className="rules-list">
+          <li><span>1</span><p>A celebrity photo appears.</p></li>
+          <li><span>2</span><p>Tap the mic and say the name as you know it in English.</p></li>
+          <li><span>3</span><p>Type your answer if voice recognition is unavailable.</p></li>
+        </ol>
+        <div className="pronunciation-note">
+          <strong>Pronunciation-friendly</strong>
+          <p>Common English pronunciations and spellings of K-pop names count. Perfect Korean is never required.</p>
         </div>
-        <div className="member">
-          <img src={star} alt="hi" />
-          <a href="https://github.com/lindsey-nielsen" target="_blank">
-            Lindsey
-          </a>
+        <div className="team-links">
+          <p>Created at WiNGHacks 2024 by</p>
+          <div>
+            <a href="https://github.com/IndexDuo" target="_blank" rel="noreferrer">Jing</a>
+            <a href="https://github.com/lindsey-nielsen" target="_blank" rel="noreferrer">Lindsey</a>
+            <a href="https://github.com/ca764763" target="_blank" rel="noreferrer">Casandra</a>
+          </div>
         </div>
-        <div className="member">
-          <img src={star} alt="hi" />
-          <a href="https://github.com/ca764763" target="_blank">
-            Casandra
-          </a>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

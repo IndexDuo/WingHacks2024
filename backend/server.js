@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://jing:jingpassword@winghacks.wi3akjz.mongodb.net', {
+mongoose.connect(process.env.MONGODB_URI, {
   dbName: 'CelebrityPhotos'
 })
 .then(() => console.log('Connected to MongoDB'))
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 });
 
 // '/data' route to send all data in JSON format
-app.get('/data', async (req, res) => {
+app.get(['/data', '/api/data'], async (req, res) => {
   try {
     // Fetch all data from the 'KpopIdols' collection in the 'CelebrityPhotos' database
     const data = await mongoose.connection.db.collection('KPopFaces').find({}).toArray();
@@ -36,7 +36,7 @@ app.get('/data', async (req, res) => {
   }
 });
 
-app.get('/data2', async (req, res) => {
+app.get(['/data2', '/api/data2'], async (req, res) => {
   try {
     // Fetch all data from the 'KpopIdols' collection in the 'CelebrityPhotos' database
     const data = await mongoose.connection.db.collection('WesternFaces').find({}).toArray();

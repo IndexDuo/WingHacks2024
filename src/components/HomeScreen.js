@@ -17,20 +17,21 @@ function HomeScreen() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="Bias Guessr Logo" />
-        <br />
-        <p>Can you guess the celebrity?</p>
-        <button className="game-button" onClick={navigateToGameScreen}>
-          Start Game
-        </button>
-        <br />
-        <button className="badges-button" onClick={navigateToAboutScreen}>
-          About
-        </button>
-      </header>
-    </div>
+    <main className="home-screen">
+      <div className="home-card">
+        <p className="home-eyebrow">The fast celebrity name game</p>
+        <img className="home-logo" src={logo} alt="BiasGuessr" />
+        <h1>Know the face?<br />Say the name.</h1>
+        <p className="home-intro">
+          A quick-fire voice challenge inspired by Korean variety-show character quizzes.
+        </p>
+        <div className="home-actions">
+          <button className="game-button" onClick={navigateToGameScreen}>Play now</button>
+          <button className="about-button" onClick={navigateToAboutScreen}>How it works</button>
+        </div>
+        <p className="home-note">Voice or typing · No perfect pronunciation needed</p>
+      </div>
+    </main>
   );
 }
 

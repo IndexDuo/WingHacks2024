@@ -19,7 +19,6 @@ function HomeScreen() {
   return (
     <main className="home-screen">
       <div className="home-card">
-        <p className="home-eyebrow">The fast celebrity name game</p>
         <img className="home-logo" src={logo} alt="BiasGuessr" />
         <h1>Know the face?<br />Say the name.</h1>
         <p className="home-intro">

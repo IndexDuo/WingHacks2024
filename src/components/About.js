@@ -14,7 +14,6 @@ const About = () => {
         <IoIosArrowBack aria-hidden="true" />
       </button>
       <section className="about-card">
-        <p className="about-eyebrow">How to play</p>
         <h1>Fast face.<br />Faster answer.</h1>
         <p className="about-lead">BiasGuessr is a quick-fire character quiz inspired by Korean variety shows.</p>
         <ol className="rules-list">

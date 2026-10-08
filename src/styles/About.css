@@ -1,7 +1,6 @@
 .about-screen { background: radial-gradient(circle at 100% 0, rgba(191,180,216,.54), transparent 20rem), #fcf7f8; min-height: 100vh; padding: 68px 18px 30px; position: relative; }
 .about-back { align-items: center; background: rgba(255,255,255,.78); border: 1px solid rgba(125,51,57,.15); border-radius: 50%; color: #29232d; cursor: pointer; display: flex; font-size: 25px; height: 44px; justify-content: center; left: 16px; padding: 0; position: absolute; top: 16px; width: 44px; }
 .about-card { margin: 0 auto; max-width: 420px; }
-.about-eyebrow { color: #8f3f55; font-size: .7rem; font-weight: 800; letter-spacing: .13em; margin: 0 0 10px; text-transform: uppercase; }
 .about-card h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.8rem, 13vw, 4rem); font-weight: 500; letter-spacing: -.05em; line-height: .95; margin: 0 0 18px; }
 .about-lead { color: #6f6774; line-height: 1.6; margin: 0; }
 .rules-list { display: grid; gap: 15px; list-style: none; margin: 27px 0; padding: 0; }

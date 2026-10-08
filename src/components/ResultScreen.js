@@ -22,7 +22,6 @@ const ResultScreen = () => {
   return (
     <main className="result-screen">
       <section className="result-card">
-        <p className="result-eyebrow">Final score</p>
         <h1>{percentage >= 80 ? "You know your stars." : percentage >= 50 ? "Nice instincts." : "Ready for a rematch?"}</h1>
         <div className="score-circle" aria-label={`${totalScore} correct out of ${totalRounds}`}>
           <strong>{totalScore}</strong>

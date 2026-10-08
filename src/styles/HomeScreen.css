@@ -11,7 +11,6 @@
 }
 
 .home-card { align-items: center; display: flex; flex-direction: column; max-width: 430px; text-align: center; width: 100%; }
-.home-eyebrow { color: #8f3f55; font-size: .69rem; font-weight: 800; letter-spacing: .12em; margin: 0 0 16px; text-transform: uppercase; }
 .home-logo { height: auto; max-width: 255px; padding: 0; width: 68%; }
 .home-card h1 { color: #29232d; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.7rem, 13vw, 4rem); font-weight: 500; letter-spacing: -.05em; line-height: .98; margin: 22px 0 15px; }
 .home-intro { color: #6f6774; font-size: .97rem; line-height: 1.6; margin: 0; max-width: 350px; }

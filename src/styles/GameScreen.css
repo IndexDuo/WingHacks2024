@@ -61,7 +61,7 @@
 }
 
 .round-copy { text-align: center; }
-.eyebrow, .feedback-kicker { color: #8f3f55; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.eyebrow { color: #8f3f55; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 .round-copy h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.35rem, 11vw, 3.4rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.95; margin: 9px 0 12px; }
 .round-copy p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin: 0 auto; max-width: 390px; }
 
@@ -90,8 +90,7 @@
 .typed-answer button, .primary-button, .secondary-button { background: var(--berry); border: 0; border-radius: 10px; color: #fff; cursor: pointer; font: inherit; font-weight: 750; height: auto; padding: 11px 15px; text-transform: none; width: auto; }
 .typed-answer button:disabled { cursor: default; opacity: 0.38; }
 
-.feedback-card { border-left: 4px solid #bb5267; max-width: 390px; padding: 5px 0 5px 18px; width: 100%; }
-.feedback-card.is-correct { border-left-color: #4a9271; }
+.feedback-card { max-width: 390px; padding: 5px 0; width: 100%; }
 .feedback-card h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 11vw, 3.8rem); font-weight: 500; letter-spacing: -.035em; line-height: 1; margin: 8px 0 10px; }
 .feedback-card p { color: var(--muted); line-height: 1.5; }
 .feedback-actions { align-items: center; display: flex; gap: 12px; margin-top: 20px; }

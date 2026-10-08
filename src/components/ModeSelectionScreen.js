@@ -25,7 +25,6 @@ const ModeSelectionScreen = () => {
         <IoIosArrowBack aria-hidden="true" />
       </button>
       <section className="mode-card">
-        <p className="mode-eyebrow">Choose your lineup</p>
         <h1>Who do you know best?</h1>
         <p className="mode-intro">Each round shows one face. Say or type the celebrity’s name to score.</p>
         <div className="mode-options">

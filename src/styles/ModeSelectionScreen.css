@@ -10,7 +10,6 @@
 
 .mode-back { align-items: center; background: rgba(255,255,255,.75); border: 1px solid rgba(125,51,57,.15); border-radius: 50%; color: #29232d; cursor: pointer; display: flex; font-size: 25px; height: 44px; justify-content: center; left: 16px; padding: 0; position: absolute; top: 16px; width: 44px; }
 .mode-card { max-width: 420px; text-align: center; width: 100%; }
-.mode-eyebrow { color: #8f3f55; font-size: .7rem; font-weight: 800; letter-spacing: .13em; margin: 0 0 10px; text-transform: uppercase; }
 .mode-card h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.6rem, 12vw, 3.8rem); font-weight: 500; letter-spacing: -.045em; line-height: 1; margin: 0 0 16px; }
 .mode-intro { color: #6f6774; line-height: 1.6; margin: 0 auto; max-width: 350px; }
 .mode-options { display: grid; gap: 13px; margin-top: 34px; }

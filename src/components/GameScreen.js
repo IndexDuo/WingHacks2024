@@ -165,12 +165,14 @@ const GameScreen = () => {
             </form>
           </div>
         ) : (
-          <section aria-live="polite" className={`feedback-card ${feedback.correct ? "is-correct" : "is-incorrect"}`}>
-            <span className="feedback-kicker">{feedback.correct ? "You got it!" : "Not this time"}</span>
+          <section aria-live="polite" className="feedback-card">
             <h2>{photo.name}</h2>
-            {feedback.heard && (
-              <p>{feedback.source === "voice" ? "I heard" : "Your guess"}: <strong>“{feedback.heard}”</strong></p>
-            )}
+            <p>
+              {feedback.correct ? "Correct!" : "Incorrect."}
+              {feedback.heard && (
+                <> {feedback.source === "voice" ? "I heard" : "Your guess"}: <strong>“{feedback.heard}”</strong></>
+              )}
+            </p>
             <div className="feedback-actions">
               <button className="primary-button" onClick={nextRound} type="button">
                 {usedIds.length >= photos.length ? "See final score" : "Next celebrity"}
